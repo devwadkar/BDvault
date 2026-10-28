@@ -1,0 +1,78 @@
+{
+  "regulation_key": "33(20)(B)",
+  "title": "Affordable Housing on Private Land",
+  "schema_version": 1,
+  "description": "UI schema for Stage 3 of the Area Analysis v2 wizard — DCPR 33(20)(B) private AH. Needs the existing-BUA / tenant totals (via a simple roster). Owner-share, AH-share and incentive % all come from regulatory_constants.",
+  "sections": [
+    {
+      "key": "plot_deductions",
+      "title": "Plot & deductions",
+      "blurb": "Enter the gross plot and every deduction.",
+      "fields": [
+        { "key": "gross_plot_area_sqm", "path": "step_2.gross_plot_area_sqm", "type": "number", "label": "Gross plot area", "unit": "sqm", "required": true, "min": 0 },
+        { "key": "primary_road_width_m", "path": "step_2.primary_road_width_m", "type": "number", "label": "Primary road width", "unit": "m", "min": 0 },
+        {
+          "key": "roads", "path": "step_2.roads", "type": "repeat-group",
+          "label": "Road setbacks", "add_label": "Add road",
+          "columns": [
+            { "key": "width", "type": "number", "label": "Width", "unit": "m" },
+            { "key": "area",  "type": "number", "label": "Deduction area", "unit": "sqm" }
+          ]
+        },
+        {
+          "key": "named", "path": "step_2.named", "type": "repeat-group",
+          "label": "Named deductions", "add_label": "Add deduction",
+          "columns": [
+            { "key": "label",   "type": "text",   "label": "Label" },
+            { "key": "area",    "type": "number", "label": "Area", "unit": "sqm" },
+            { "key": "include", "type": "number", "label": "Include? (1 or 0)" }
+          ]
+        },
+        { "key": "reservation_area_sqm", "path": "step_2.reservation_area_sqm", "type": "number", "label": "Reservation area", "unit": "sqm", "min": 0 },
+        { "key": "reservation_included_in_total", "path": "step_2.reservation_included_in_total", "type": "radio-yesno", "label": "Deduct reservation from net plot?", "yes_label": "Yes · Deduct", "no_label": "No · Retains FSI" }
+      ]
+    },
+    {
+      "key": "amenity_handover",
+      "title": "Amenity handover (Reg 14(A))",
+      "fields": [
+        { "key": "amenity_area_sqm", "path": "step_2.amenity_area_sqm", "type": "number", "label": "Amenity handover area", "unit": "sqm", "min": 0 }
+      ]
+    },
+    {
+      "key": "existing_structure",
+      "title": "Existing structure (if any)",
+      "blurb": "Vacant plot? Leave blank. If there's an existing building, add one row with BUA + tenant totals.",
+      "fields": [
+        {
+          "key": "buildings", "type": "repeat-group",
+          "label": "Existing structures", "add_label": "Add structure",
+          "writes_to": "existing_buildings",
+          "columns": [
+            { "key": "label",    "type": "text",   "label": "Label" },
+            { "key": "bua",      "type": "number", "label": "Existing BUA", "unit": "sqm" },
+            { "key": "tenants",  "type": "number", "label": "Tenants" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "key": "insitu",
+      "title": "In-situ sale (optional)",
+      "blurb": "Row 15 of the Feasibility Statement. Leave blank to use the auto-computed maximum = min(Sale Component, Gross × in-situ FSI cap − Rehab). Private AH cap: 4.0 FSI.",
+      "fields": [
+        {
+          "key": "sale_bua_proposed_in_situ_sqm",
+          "path": "step_3.sale_bua_proposed_in_situ_sqm",
+          "type": "number",
+          "label": "Proposed Sale BUA In-Situ",
+          "unit": "sqm",
+          "min": 0,
+          "help": "How much of the Sale Component you actually plan to build on-site. Blank = the Feasibility view shows the auto-max value flagged as auto-max · unconfirmed.",
+          "tip": "The remainder of the Sale Component becomes Balance Sale BUA / TDR (Row 18)."
+        }
+      ]
+    }
+  ]
+}

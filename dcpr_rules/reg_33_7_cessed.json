@@ -1,0 +1,133 @@
+{
+  "regulation_key": "33(7)",
+  "title": "Reconstruction / Redevelopment of Cessed Buildings in Island City (or MCGM-owned old buildings)",
+  "part": "VI",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "source_pdf_lines": {"start": 10032, "end": 10428},
+
+  "scope": "Cessed buildings existing prior to 30/9/1969 in Island City (Mumbai City area), attracting the provisions of MHAD Act 1976. Also covers MCGM/Corporation-owned buildings existing prior to 30/9/1969.",
+
+  "eligibility": {
+    "cessed_building_cutoff_date": "1969-09-30",
+    "attracts": "Maharashtra Housing and Area Development Act, 1976",
+    "new_tenancy_cutoff": "1996-06-13",
+    "post_1996_tenancy_note": "New tenancy created after 13/6/1996 shall NOT be considered for FSI computation",
+    "eligibility_verification_by": "Mumbai Repairs and Reconstruction Board (MBRRB)"
+  },
+
+  "consent_requirement": {
+    "current_pct": 51,
+    "original_pct_before_amendment": 70,
+    "certified_by": "MBRRB (Mumbai Repairs and Reconstruction Board)"
+  },
+
+  "rehab_tenement_carpet": {
+    "min_sqm": 27.88,
+    "min_sqft": 300,
+    "max_sqm_free": 120,
+    "max_sqft_free_original": 70,
+    "max_note": "Maximum 120 sqm carpet free of cost (updated from 70 sqm). Beyond that, occupier pays cost of construction per ASR to developer.",
+    "non_residential_formula": "Equal to existing area occupied in old building",
+    "residential_cum_commercial_min_sqm": 27.88,
+    "excess_carpet_counted_for_rehab_fsi_only": "Carpet above 120 sqm counted for rehab FSI but NOT incentive FSI"
+  },
+
+  "fsi_scheme_variants": {
+    "single_plot_undertaken_by_landlord_or_society_of_tenants": {
+      "clause": "5(a)",
+      "total_fsi": "max(3.00 × gross_plot, rehab_fsi + 50% incentive_fsi)",
+      "incentive_fsi_pct_of_rehab": 50,
+      "gross_fsi_floor": 3.00
+    },
+    "composite_2_to_5_plots": {
+      "clause": "5(b) first paragraph",
+      "total_fsi": "max(3.00 × gross_plot, rehab_fsi + 65% incentive_fsi)",
+      "incentive_fsi_pct_of_rehab": 65,
+      "additional_rehab_carpet_pct": 5
+    },
+    "composite_3_plus_plots": {
+      "clause": "5(b) second paragraph",
+      "total_fsi": "max(3.00 × gross_plot, rehab_fsi + 70% incentive_fsi)",
+      "incentive_fsi_pct_of_rehab": 70,
+      "additional_rehab_carpet_pct": 10,
+      "note_updated": "Originally 6+ plots; updated to 3+ plots"
+    },
+    "co_op_society_of_ex_A_category_cessed_now_exempted_but_unsafe": {
+      "clause": "5(c)",
+      "total_fsi": "max(2.50 × gross_plot, rehab_fsi + 50% incentive_fsi)",
+      "incentive_fsi_pct_of_rehab": 50,
+      "gross_fsi_floor": 2.50
+    },
+    "mcgm_corporation_buildings_pre_1969_redevelopment": {
+      "surplus_bua_sharing": "MCGM : Society of Occupants = 1 : 0.5",
+      "incentive_thereon_sharing": "Same 1 : 0.5"
+    }
+  },
+
+  "surplus_bua_to_mbrrb": {
+    "description": "Prescribed % of surplus BUA per Third Schedule of MHAD Act 1976 handed to MBRRB for accommodating occupants of unreconstructable cessed buildings/transit camps",
+    "handover_alternative": "Area equivalent to market-value BUA (ASR of that year) may be provided elsewhere in same or adjoining ward"
+  },
+
+  "fungible_compensatory": {
+    "on_rehab_component": "No premium (per Reg 31(3))",
+    "on_surplus_bua_to_mhada_or_mcgm": "No premium; surplus is EXCLUSIVE of fungible if fungible is availed",
+    "restriction": "Fungible on surplus-to-MHADA/MCGM CANNOT be used for sale component"
+  },
+
+  "non_residential_use_of_incentive_fsi": {
+    "max_pct": 20,
+    "note": "20% of incentive FSI may be used for non-residential purposes otherwise permissible in DCPR"
+  },
+
+  "reservation_overlay": {
+    "reserved_zone_redev_allowed": "Redev in any zone allowed on-site without change-of-zone process (except industrial user existing segregating distance)",
+    "small_non_buildable_reservation_up_to_500_sqm": "Cleared by shifting tenants; site absorbed",
+    "large_reservation_over_500_sqm": "Redev of up to 67% of reservation area allowed; 33% surrendered clear to MCGM",
+    "school_reservation_RE_1_1_or_RE_1_2": "Developer builds school (min 500 students) at cost, hands over FoC; that BUA excluded from FSI computation; land then developable at full permissible FSI",
+    "higher_education_RE_2_1": "Same treatment; min 800 students",
+    "parking_lot_reservation": "100% BUA @ Zonal FSI of reserved area handed to MCGM",
+    "other_buildable_reservations": "25% of BUA of reservation area handed to MCGM free of cost"
+  },
+
+  "premium": {
+    "clause": "Sub-Regulation 8",
+    "formula": "max(25% of normal premium, 6.25% of ASR land rate for FSI 1)",
+    "applies_to": "Relaxations under Reg 33(10) sub-regulation 6 (except clauses 6.11, 6.15, 6.16, 6.18)"
+  },
+
+  "additional_development_cess": {
+    "clause": "15",
+    "formula": "max(100% of development charges on BUA over Zonal FSI, ₹5000/sqm)",
+    "applies_to": "BUA over Zonal (basic) FSI, for rehab + free sale components",
+    "additional_to_dev_charges_under_MRTP_s_124": true,
+    "min_amenity_open_space_pct": 10
+  },
+
+  "non_cessed_portion_treatment": {
+    "clause": "19",
+    "up_to_25_pct_of_plot_area": "Not deducted; FSI computed on total plot area",
+    "above_25_pct": "Portion above 25% deducted from plot area; that deducted area's FSI is per Reg 30",
+    "provision_2_not_applicable_to": "non_cessed occupier"
+  },
+
+  "min_lift_open_space_after_relaxation_pct": 10,
+
+  "corpus_fund": {
+    "required": true,
+    "created_as_per": "MHADA prescription"
+  },
+
+  "cross_references": {
+    "reg_31_3_fungible": "Rehab fungible free of premium",
+    "reg_33_10_borrowed_relaxations": "Reg 33(10) sub-regulation 6 relaxations apply except 6.11, 6.15, 6.16, 6.18",
+    "reg_32_tdr": "Owner may opt for TDR instead of on-plot incentive FSI"
+  },
+
+  "extraction_gaps": {
+    "note": "MHAD Third Schedule surplus BUA percentage is not in DCPR text — determined by MHADA table. Numeric FSI-required-for-rehab depends on actual eligible occupant list per MBRRB.",
+    "calculator_status": "PENDING — need at least one reference 33(7) feasibility (ideally a cessed A-category redevelopment) to validate before authoring Reg33_7_Calculator.php"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "regulation_key": "33(7)(A)",
+  "title": "Reconstruction / Redevelopment of Dilapidated Unsafe Tenanted Buildings (Suburbs / Non-Cessed in City)",
+  "part": "VI",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "source_pdf_lines": {"start": 10430, "end": 10583},
+
+  "scope": "Reconstruction/redevelopment of authorized tenant-occupied buildings that have been declared unsafe/uninhabitable by MCGM. Applies to buildings in Suburbs & Extended Suburbs, AND authorized non-cessed tenant-occupied buildings in Mumbai City (Island City).",
+
+  "trigger_condition": "Building declared unsafe for human habitation OR to be demolished under lawful MCGM order — duly certified as such.",
+
+  "eligibility": {
+    "new_tenancy_cutoff": "1996-06-13",
+    "post_1996_tenancy_note": "Not considered",
+    "existence_evidence": "Certified inspection extract of MCGM for 1995-96 OR Court Order proving existence prior to 13/6/1996",
+    "eligibility_verification_by": "Municipal Corporation of Greater Mumbai (MCGM)"
+  },
+
+  "consent_requirement": {
+    "current_pct": 51,
+    "original_pct_before_amendment": 70
+  },
+
+  "rehab_tenement_carpet": {
+    "min_sqm": 27.88,
+    "min_sqft": 300,
+    "max_sqm_free": 70,
+    "max_sqft_free": 753,
+    "max_note": "Above 70 sqm the tenant pays cost of construction per Ready Reckoner rate. Excess carpet counted for rehab FSI only, NOT incentive FSI.",
+    "non_residential_formula": "Equal to area occupied in old building",
+    "residential_cum_commercial_min_sqm": 27.88
+  },
+
+  "fsi_formula": {
+    "single_tenant_occupied_building": {
+      "total_fsi": "rehab_fsi + 50% incentive_fsi",
+      "incentive_fsi_pct_of_rehab": 50
+    },
+    "composite_tenant_plus_non_tenanted": {
+      "total_fsi": "rehab_fsi + 50% incentive_fsi + FSI already authorisedly consumed by non-tenanted buildings",
+      "incentive_fsi_pct_of_rehab": 50
+    },
+    "opt_out_option": "If rehab + incentive < permissible FSI per Reg 30, owner may opt for regular development up to permissible FSI via TDR / additional-FSI-on-premium (Reg 30)"
+  },
+
+  "layout_area_for_fsi_computation": {
+    "included": ["DP roads within layout", "Internal roads"],
+    "excluded": ["Land under reservation of public amenities"]
+  },
+
+  "non_residential_use_of_incentive_fsi_max_pct": 20,
+
+  "fungible_compensatory_on_rehab": {
+    "premium": "None (free)",
+    "restriction": "Cannot be used for free-sale component; must add area over eligible entitlement to existing tenants"
+  },
+
+  "additional_development_cess": {
+    "rate_per_sqm_inr": 5000,
+    "applies_to": "BUA over-and-above permissible FSI per Table 12 (Reg 30)",
+    "escalation_pct_every_3_years": 10,
+    "additional_to_dev_charges_under_MRTP_s_124": true
+  },
+
+  "transit_arrangement": {
+    "permission": "Temporary transit camps on same land or land elsewhere belonging to landlord, with concessions as in Reg 33(10) SRS",
+    "demolition_deadline": "Within 1 month from OC of reconstructed building"
+  },
+
+  "timeline_obligations": {
+    "commence_within_years_of_demolition": 1,
+    "complete_within_years": 5
+  },
+
+  "corpus_fund": {
+    "required": true,
+    "created_by": "Landlord or Co-op Housing Society of tenants",
+    "maintenance_period_years": 10
+  },
+
+  "extraction_gaps": {
+    "calculator_status": "PENDING — needs a reference 33(7)(A) feasibility to validate the FSI + incentive formula and dev cess escalation before authoring Reg33_7A_Calculator.php"
+  }
+}

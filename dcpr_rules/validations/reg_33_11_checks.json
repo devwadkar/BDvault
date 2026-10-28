@@ -1,0 +1,117 @@
+{
+  "regulation_key": "33(11)",
+  "version": 1,
+  "note": "Compliance assertions for 33(11). Auto-evaluated after calc; produces 🟢/🟡/🔴 rows.",
+  "checks": [
+    {
+      "key": "input_gross_plot_positive",
+      "category": "input",
+      "label": "Gross plot area entered and positive",
+      "type": "min",
+      "source_type": "input", "source_key": "gross_plot_area_sqm", "min": 0.01,
+      "severity_on_fail": "red",
+      "regulation_ref": "Reg 30(A)(1)",
+      "recommended_action": "Enter gross plot area from PRC / title records."
+    },
+    {
+      "key": "input_road_width_min_9m",
+      "category": "input",
+      "label": "Primary road width ≥ 9 m",
+      "type": "min",
+      "source_type": "input", "source_key": "primary_road_width_m", "min": 9,
+      "severity_on_fail": "yellow",
+      "regulation_ref": "DCPR 33(11) applicability + Reg 30(A) proviso",
+      "recommended_action": "Road widths below 9m may render the scheme non-viable. Verify DP plan and abutting road width."
+    },
+    {
+      "key": "input_flats_positive",
+      "category": "input",
+      "label": "Number of flats entered and positive",
+      "type": "min",
+      "source_type": "input", "source_key": "number_of_flats", "min": 1,
+      "severity_on_fail": "red",
+      "regulation_ref": "33(11) A",
+      "recommended_action": "Confirm eligible flat count from society records."
+    },
+    {
+      "key": "zone_selected",
+      "category": "input",
+      "label": "Development zone selected",
+      "type": "required",
+      "source_type": "input", "source_key": "development_zone",
+      "severity_on_fail": "red",
+      "regulation_ref": "Reg 30 Table 12 + 33(11) A",
+      "recommended_action": "Select Island City or Suburbs & Extended Suburbs."
+    },
+    {
+      "key": "input_zonal_fsi_range",
+      "category": "input",
+      "label": "Zonal FSI in typical range 1.00 – 1.33",
+      "type": "between",
+      "source_type": "input", "source_key": "zonal_fsi", "min": 1.00, "max": 1.33,
+      "severity_on_fail": "yellow",
+      "regulation_ref": "33(11) Table A",
+      "recommended_action": "Zonal FSI is 1.00 (Suburbs) or 1.33 (Island City). Verify."
+    },
+    {
+      "key": "input_additional_fsi_cap",
+      "category": "fsi",
+      "label": "Additional FSI ≤ 3.00 (statutory cap for Suburbs, Island Max 2.67)",
+      "type": "max",
+      "source_type": "input", "source_key": "additional_fsi", "max": 3.00,
+      "severity_on_fail": "red",
+      "regulation_ref": "33(11) Table A",
+      "recommended_action": "Additional FSI capped at 2.67 (Island) or 3.00 (Suburbs). Verify inputs."
+    },
+    {
+      "key": "input_sra_share_range",
+      "category": "fsi",
+      "label": "SRA share of Additional FSI in industry range 60-70%",
+      "type": "between",
+      "source_type": "input", "source_key": "sra_additional_share_pct", "min": 50, "max": 75,
+      "severity_on_fail": "yellow",
+      "regulation_ref": "33(11) A + industry convention 63/37",
+      "recommended_action": "Industry standard is 63% SRA / 37% Sale+Society. Values outside 60-70% need review."
+    },
+    {
+      "key": "input_fungible_max_35",
+      "category": "fsi",
+      "label": "Fungible % ≤ 35 (residential)",
+      "type": "max",
+      "source_type": "input", "source_key": "apply_fungible_pct", "max": 35,
+      "severity_on_fail": "red",
+      "regulation_ref": "Reg 31(3)",
+      "recommended_action": "Residential fungible max 35% per Reg 31(3)."
+    },
+    {
+      "key": "full_scheme_fsi_within_cap",
+      "category": "compliance",
+      "label": "Full Scheme FSI ≤ 5.40 (4.0 + 35% fungible)",
+      "type": "max",
+      "source_type": "calc", "source_key": "full_scheme_fsi", "max": 5.40,
+      "severity_on_fail": "red",
+      "regulation_ref": "33(11) A max",
+      "recommended_action": "Reduce Additional FSI or fungible % to bring total ≤ 5.40."
+    },
+    {
+      "key": "net_plot_positive",
+      "category": "land",
+      "label": "Net plot area (after deductions) is positive",
+      "type": "min",
+      "source_type": "calc", "source_key": "net_plot_area_sqm", "min": 0.01,
+      "severity_on_fail": "red",
+      "regulation_ref": "Reg 30(A)(2)",
+      "recommended_action": "Setback + amenity deductions exceed gross plot. Verify inputs."
+    },
+    {
+      "key": "sra_ptc_positive",
+      "category": "compliance",
+      "label": "SRA-PTC share is positive (developer must hand over PTC)",
+      "type": "min",
+      "source_type": "calc", "source_key": "sra_ptc_total_sqm", "min": 0.01,
+      "severity_on_fail": "yellow",
+      "regulation_ref": "33(11) A — SRA handover obligation",
+      "recommended_action": "If Additional FSI is 0, SRA-PTC share is 0 — scheme reduces to a normal Reg 30 redevelopment. Verify."
+    }
+  ]
+}

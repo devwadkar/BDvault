@@ -1,0 +1,130 @@
+{
+  "regulation_key": "33(11)",
+  "title": "Permanent Transit Camp tenements for Slum Rehabilitation Scheme / Rental Housing",
+  "part": "VI",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "source_pdf_lines": {"start": 14774, "end": 14924},
+
+  "scope": "Construction of Permanent Transit Camp (PTC) tenements for SRA relocation OR Rental Housing. Allows total FSI on gross plot to exceed base up to 4.00.",
+
+  "fsi_distribution_table_A": {
+    "island_city": [
+      {
+        "plot_area_max_sqm": 2000,
+        "min_road_width_m": 12,
+        "total_permissible_fsi": 3.0,
+        "zonal_fsi": 1.33,
+        "additional_fsi": 1.67,
+        "transit_fsi_share_of_additional": "100% (all additional to transit)"
+      },
+      {
+        "plot_area_min_sqm": 2000,
+        "min_road_width_m": 18,
+        "total_permissible_fsi": 4.0,
+        "zonal_fsi": 1.33,
+        "additional_fsi": 2.67,
+        "transit_fsi_share_of_additional_pct": 37,
+        "sale_fsi_share_of_additional_pct": 63
+      }
+    ],
+    "suburbs_and_extended_suburbs": [
+      {
+        "plot_area_max_sqm": 2000,
+        "min_road_width_m": 12,
+        "total_permissible_fsi": 3.0,
+        "zonal_fsi": 1.00,
+        "additional_fsi": 2.00,
+        "transit_fsi_share_of_additional": 1.50,
+        "sale_fsi_share_of_additional": 1.50,
+        "note": "50/50 split"
+      },
+      {
+        "plot_area_min_sqm": 2000,
+        "min_road_width_m": 18,
+        "total_permissible_fsi": 4.0,
+        "zonal_fsi": 1.00,
+        "additional_fsi": 3.00,
+        "transit_fsi_share_pct": 50,
+        "sale_fsi_share_pct": 50
+      }
+    ]
+  },
+
+  "not_permitted_on": ["Lands reserved/designated for existing amenity in DP", "SDZ (Special Development Zone)", "GZ (Green Zone)", "Plots where permissible Zonal FSI < 1.00"],
+
+  "tenement_specifications": {
+    "transit_tenement_carpet_sqm": 25.0,
+    "commercial_tenement_carpet_sqm": 20.90,
+    "commercial_location": "Ground floor",
+    "commercial_handover": "Free of cost to SRA (for project-affected commercial tenements)",
+    "alternative_use": "Residential transit tenements can be used for Govt Staff Quarters etc."
+  },
+
+  "amenity_provisions": {
+    "reference": "As per Reg 33(10) sub-regulation 8",
+    "includes": ["Aaganwadi", "Health Centre / Outpost", "Community Hall / Gymnasium / Fitness Centre", "Skill Development Centre", "Women Entrepreneurship Centre", "Yuva Kendra / Library", "Society Office", "Balwadi"],
+    "convenience_shops_along_layout_road_pct_of_zonal_fsi": 25
+  },
+
+  "release_of_additional_fsi": {
+    "correlation": "Additional FSI over Zonal is released in correlation to BUA of tenements handed over free of cost to SRA/MCGM",
+    "tdr_alternative": "TDR permitted in lieu of unconsumed sale component of additional FSI",
+    "planning_authority_for_PTC_rental": "SRA"
+  },
+
+  "sequencing_condition": {
+    "trigger": "Transit camps must be handed to SRA before OC, water, power connection released for other portions",
+    "purpose": "Enforces build-out order"
+  },
+
+  "clubbing_provisions": {
+    "eligibility": "Two or more PTC/rental-housing schemes by same/collaborating owner-developer-society with CEO(SRA) approval",
+    "what_can_be_combined": "Both rehab and sale components; can be located in any proportion across plots",
+    "condition": "Total FSI per Table A must not be exceeded on any plot AND clubbing must yield independent plot/building/wing with SRA component handed over",
+    "max_distance_km": 5,
+
+    "premium_case_A_sra_shift_to_lower_asr_plot": {
+      "formula": "51% × unearned income",
+      "unearned_income": "Difference in open land ASR rate × BUA at receiving plot",
+      "payment_stages": "50% at IOA of extra sale, 50% at CC"
+    },
+
+    "premium_case_B_base_fsi_shift_between_plots_in_clubbing": {
+      "formula": "40% × unearned income (RC-and-sale based) + 100% × ASR land difference for base FSI shift",
+      "unearned_income_calc": "Sale valuation of transferred component minus cost of construction of sale and Planning Authority component minus statutory payments to authorities",
+      "payment_stages": "50% at IOA, 50% at CC; alternatively developer surrenders equivalent BUA valued at ASR sale rate"
+    },
+
+    "not_permitted_for": "SRA schemes under clause 3.11 of Reg 33(10)"
+  },
+
+  "premium_utilization": {
+    "shelter_fund_state_pct": 66.67,
+    "deputy_director_TP_greater_mumbai_pct": 33.33,
+    "note": "Original DCPR text: 2/3 shelter fund, 1/3 Dept of Town Planning"
+  },
+
+  "cross_references": {
+    "reg_33_10": "Uses Reg 33(10)(8) for amenity list; not combinable with 33(10) clause 3.11 SRS scheme via clubbing",
+    "sra_planning_authority": "SRA is Planning Authority for PTC + Rental Housing"
+  },
+
+  "operational_fsi_split_verified": {
+    "description": "Verified against Bhagwan Apartment (Worli Hill, 1575 sqm, 24m road), Abdul Court + Kachwalla (Mahim, 1578 sqm, 18.4m road), JAI GIRNAR (Tardeo, 3346 sqm, 36.6m road). All three use the industry 63/37 split of Additional FSI between SRA-PTC and Sale+Society.",
+    "formula": {
+      "zonal_bua_sqm": "plot_area_sqm × zonal_fsi (1.33 Island / 1.00 Suburbs)",
+      "additional_bua_sqm": "plot_area_sqm × additional_fsi (max 2.67 Island / 3.00 Suburbs; road-width-dependent per Table A above)",
+      "sra_ptc_share_bua_sqm": "additional_bua_sqm × 0.63 (SRA gets 63% of Additional FSI — handed over as PTC/Rental)",
+      "sale_society_share_bua_sqm": "zonal_bua_sqm + (additional_bua_sqm × 0.37)",
+      "fungible_35pct_on_each": "Both SRA-PTC and Sale+Society components add 35% fungible (residential)",
+      "total_permissible_full_scheme_fsi": "5.40 (= 4.0 base + 35% fungible on top)"
+    },
+    "convention_note": {
+      "63_pct_of_additional": "The SRA share is 63% of the ADDITIONAL FSI (not of total). Industry practice from NKPC feasibilities.",
+      "existing_carpet_additional_pct": "50% on MOFA / 55% on RERA carpet (Bhagwan) or 50%/55% (Abdul) or 30%/35% (JAI GIRNAR — depends on scheme age/tier). User-configurable input.",
+      "additional_fsi_override": "NKPC feasibilities routinely use max 2.67 (Island) even for plots <2000 sqm if road ≥ 18m. Calculator accepts user override; default is the strict DCPR table value."
+    }
+  }
+}

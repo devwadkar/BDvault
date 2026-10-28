@@ -1,0 +1,71 @@
+{
+  "regulation_key": "33(7)(B)",
+  "title": "Additional FSI for Redevelopment of Existing Residential Housing Societies (Non-Cessed)",
+  "part": "VI",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "source_pdf_lines": {"start": 10585, "end": 10664},
+
+  "scope": "Redevelopment of existing NON-cessed residential co-op housing societies (or landlord-owned buildings) where existing members are re-accommodated on the same plot.",
+
+  "eligibility": {
+    "building_min_age_years": 30,
+    "age_reckoned_from": "Date of Occupation Certificate OR first date of property tax assessment; whichever is on record with MCGM",
+    "existing_bua_condition": "Existing authorized BUA must be MORE than Zonal (basic) FSI",
+    "not_applicable_when_using": ["33(5)", "33(7)", "33(8)", "33(9)", "33(9)(A)", "33(9)(B)", "33(10)", "33(10)(A)", "33(20)(A)", "33(21)"]
+  },
+
+  "incentive_additional_bua_formula": {
+    "clause": "1",
+    "formula": "1.50 × (RC / LR) × (authorized_existing_BUA_sqm + balcony_area_if_free_of_FSI_previously)",
+    "RC": "Rate of construction per sqm as per ASR",
+    "LR": "Rate of developed land per sqm as per ASR (for FSI 1)",
+    "alternative_flat_incentive": "15% of existing BUA OR 10 sqm per tenement, whichever is more, free of premium",
+    "note": "Both formulations appear — DCPR text has amendments layered."
+  },
+
+  "interaction_with_permissible_fsi_of_2": {
+    "case_A_low_existing_bua": {
+      "condition": "existing_authorized_BUA + incentive_additional_BUA < permissible_FSI(2.0)",
+      "action": "Society avails additional-FSI-on-premium/TDR up to permissible FSI of 2.0"
+    },
+    "case_B_high_existing_bua": {
+      "condition": "existing_authorized_BUA + incentive_additional_BUA > permissible_FSI(2.0)",
+      "action": "Society gets incentive additional BUA in lieu of cost of construction of existing BUA, above permissible FSI 2.0"
+    },
+    "reg_45_exception": "For redevelopment under Reg 45, full incentive additional BUA is available as TDR"
+  },
+
+  "staircase_lift_lobby_treatment": {
+    "if_previously_free_of_FSI_with_premium": "Those areas remain free of FSI without further premium (to that extent)",
+    "if_previously_counted_in_FSI": "Incentive additional BUA also given on those areas; they may be availed free of FSI on payment of premium per current Reg"
+  },
+
+  "fungible_compensatory_area_reg_31_3": {
+    "on_existing_authorized_BUA": "Free of premium",
+    "on_incentive_additional_BUA": "Free of premium (in lieu of cost of construction of authorized existing BUA)"
+  },
+
+  "in_situ_fsi_cap": {
+    "max_in_situ_fsi": 4.0,
+    "unconsumed_bua_handling": "TDR under DCPR provisions; plot potential perpetually restricted to consumed BUA under this Regulation"
+  },
+
+  "mixed_tenanted_and_society_plot": {
+    "condition": "Tenanted building/s AND co-op housing society (non-tenanted) buildings co-exist on same plot",
+    "treatment": "Proportionate land component (based on existing authorized BUA of tenanted portion) developed under 33(7)(A); remainder notional plot under 33(7)(B)"
+  },
+
+  "cross_references": {
+    "reg_14A": "Additional BUA independent of Reg 14(A)",
+    "reg_15_16_17": "Also independent",
+    "reg_31_3_fungible": "Free on existing authorized BUA and incentive additional BUA",
+    "reg_30": "Society may avail regular FSI-on-premium/TDR up to permissible FSI 2.0",
+    "reg_45": "Special treatment — full incentive as TDR"
+  },
+
+  "extraction_gaps": {
+    "calculator_status": "PENDING — needs a 33(7)(B) feasibility to validate the (RC/LR)-based incentive formula and TDR handling before authoring Reg33_7B_Calculator.php"
+  }
+}

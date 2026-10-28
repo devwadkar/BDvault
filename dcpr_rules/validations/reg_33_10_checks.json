@@ -1,0 +1,192 @@
+{
+  "regulation_key": "33(10)",
+  "title": "DCPR 33(10) — Validation Assertions",
+  "version": 1,
+
+  "check_types_supported": [
+    "required           — source_value is present, non-empty, and > 0 (numeric) or non-empty string",
+    "min                — source_value >= min",
+    "max                — source_value <= max",
+    "between            — min <= source_value <= max",
+    "less_than_or_equal — value(source_key) <= value(compare_key)",
+    "less_than          — value(source_key) < value(compare_key)",
+    "greater_than       — value(source_key) > value(compare_key)",
+    "expression         — arbitrary boolean over inputs/calcs (evaluated with a safe restricted evaluator)"
+  ],
+
+  "source_types": ["input", "calc"],
+  "severity_levels": ["red", "yellow", "green"],
+
+  "checks": [
+    {
+      "key": "input_gross_plot_positive",
+      "category": "land",
+      "label": "Gross plot area entered and positive",
+      "type": "required",
+      "source_type": "input",
+      "source_key": "gross_plot_area_sqm",
+      "severity_on_fail": "red",
+      "regulation_ref": "Reg 30(A)(1)",
+      "recommended_action": "Enter the gross plot area from the CTS / title records. Must be > 0."
+    },
+    {
+      "key": "input_zone_selected",
+      "category": "land",
+      "label": "Development zone selected",
+      "type": "required",
+      "source_type": "input",
+      "source_key": "development_zone",
+      "severity_on_fail": "red",
+      "regulation_ref": "Reg 30 Table 12 + 33(10) VIII 3.3–3.5",
+      "recommended_action": "Choose Island City / Suburbs / Difficult Area — the base rehab-to-sale ratio depends on this."
+    },
+    {
+      "key": "input_primary_road_min_9m",
+      "category": "land",
+      "label": "Primary road width ≥ 9 m",
+      "type": "min",
+      "source_type": "input",
+      "source_key": "primary_road_width_m",
+      "min": 9.0,
+      "severity_on_fail": "yellow",
+      "regulation_ref": "DCPR 33(10) applicability + Reg 30(A) proviso",
+      "recommended_action": "Under DCPR 2034 a 9 m road is deemed sufficient for 33(10). For plots on narrower roads, verify with SRA."
+    },
+    {
+      "key": "input_eligible_tenements_positive",
+      "category": "sra",
+      "label": "Eligible tenements entered and positive",
+      "type": "required",
+      "source_type": "input",
+      "source_key": "eligible_tenements",
+      "severity_on_fail": "red",
+      "regulation_ref": "33(10) VI 1.5",
+      "recommended_action": "Complete the Slum Act Chapter I-B eligibility survey and enter the confirmed eligible count."
+    },
+    {
+      "key": "input_carpet_min_25",
+      "category": "sra",
+      "label": "Rehab carpet per tenement ≥ 25 sqm (statutory minimum)",
+      "type": "min",
+      "source_type": "input",
+      "source_key": "carpet_area_per_tenement_sqm",
+      "min": 25.0,
+      "severity_on_fail": "red",
+      "regulation_ref": "33(10) VI 1.1",
+      "recommended_action": "DCPR 33(10) VI 1.1 mandates minimum 25 sqm carpet area per rehab tenement. Increase the value."
+    },
+    {
+      "key": "input_loading_reasonable",
+      "category": "sra",
+      "label": "Rehab BUA loading factor in typical range 1.20 – 1.40",
+      "type": "between",
+      "source_type": "input",
+      "source_key": "rehab_loading_factor",
+      "min": 1.20,
+      "max": 1.40,
+      "severity_on_fail": "yellow",
+      "regulation_ref": "Industry practice (typical Mumbai high-rise SRA)",
+      "recommended_action": "Loading factor is outside the 1.20 – 1.40 industry-normal band. Verify with architect."
+    },
+    {
+      "key": "input_fungible_max_35",
+      "category": "fsi",
+      "label": "Fungible % ≤ 35 (residential)",
+      "type": "max",
+      "source_type": "input",
+      "source_key": "apply_fungible_pct",
+      "max": 35.0,
+      "severity_on_fail": "red",
+      "regulation_ref": "Reg 31(3)",
+      "recommended_action": "Residential fungible compensatory area is capped at 35% per Reg 31(3). Reduce the value."
+    },
+    {
+      "key": "calc_net_plot_positive",
+      "category": "land",
+      "label": "Net plot area (after deductions) is positive",
+      "type": "min",
+      "source_type": "calc",
+      "source_key": "net_plot_area_sqm",
+      "min": 0.01,
+      "severity_on_fail": "red",
+      "regulation_ref": "Reg 30(A)(2)",
+      "recommended_action": "Deductions exceed gross plot area — review the deduction inputs."
+    },
+    {
+      "key": "calc_total_deductions_within_gross",
+      "category": "land",
+      "label": "Total deductions ≤ gross plot area",
+      "type": "less_than_or_equal",
+      "source_type": "calc",
+      "source_key": "total_deductions_sqm",
+      "compare_type": "calc",
+      "compare_key": "gross_plot_area_sqm",
+      "severity_on_fail": "red",
+      "regulation_ref": "Reg 30(A)(2)",
+      "recommended_action": "Total deductions exceed gross plot area — check the inputs for double-counting."
+    },
+    {
+      "key": "calc_fsi_consumed_within_4",
+      "category": "fsi",
+      "label": "FSI Consumed In-Situ ≤ 4.0 (statutory in-situ cap)",
+      "type": "max",
+      "source_type": "calc",
+      "source_key": "fsi_consumed_in_situ",
+      "max": 4.0,
+      "severity_on_fail": "red",
+      "regulation_ref": "33(10) VIII 3.8",
+      "recommended_action": "In-situ FSI consumption exceeds 4.0. Reduce sale-in-situ BUA and move balance to TDR (Reg 32)."
+    },
+    {
+      "key": "calc_fsi_sanctioned_over_4_needs_tdr",
+      "category": "fsi",
+      "label": "FSI Sanctioned > 4.0 — balance must go to TDR",
+      "type": "greater_than",
+      "source_type": "calc",
+      "source_key": "fsi_sanctioned",
+      "compare_type": "literal",
+      "compare_value": 4.0,
+      "severity_on_fail": "yellow",
+      "invert": true,
+      "regulation_ref": "33(10) VIII 3.7 + Reg 32",
+      "recommended_action": "Sanctioned FSI exceeds the 4.0 in-situ cap. The excess is granted as TDR per Reg 32 and can be sold/utilized on receiving plots."
+    },
+    {
+      "key": "calc_sale_in_situ_within_max",
+      "category": "fsi",
+      "label": "Sale BUA proposed in-situ ≤ Max sale in-situ",
+      "type": "less_than_or_equal",
+      "source_type": "input",
+      "source_key": "sale_bua_proposed_in_situ_sqm",
+      "compare_type": "calc",
+      "compare_key": "sale_bua_in_situ_max_sqm",
+      "severity_on_fail": "red",
+      "regulation_ref": "33(10) VIII 3.8",
+      "recommended_action": "Proposed in-situ sale BUA exceeds the maximum that fits under the 4.0 FSI cap. Reduce it or move balance to TDR."
+    },
+    {
+      "key": "calc_effective_ratio_reasonable",
+      "category": "sale",
+      "label": "Effective rehab-to-sale ratio ≤ 2.0 (sanity)",
+      "type": "max",
+      "source_type": "calc",
+      "source_key": "sale_ratio_effective",
+      "max": 2.0,
+      "severity_on_fail": "yellow",
+      "regulation_ref": "33(10) VIII 3.3–3.6",
+      "recommended_action": "Effective ratio above 2.0 is unusually high — verify zone and large-scheme incentive tier."
+    },
+    {
+      "key": "calc_balance_tdr_non_negative",
+      "category": "sale",
+      "label": "Balance sale BUA (TDR) is non-negative",
+      "type": "min",
+      "source_type": "calc",
+      "source_key": "balance_sale_bua_tdr_sqm",
+      "min": 0.0,
+      "severity_on_fail": "red",
+      "regulation_ref": "33(10) VIII 3.8 + Reg 32",
+      "recommended_action": "Balance sale BUA turned negative — proposed in-situ sale exceeds sale entitlement. Check inputs."
+    }
+  ]
+}

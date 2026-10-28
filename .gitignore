@@ -1,0 +1,51 @@
+# ─── Secrets ────────────────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ─── Runtime output / user uploads ──────────────────────────────────────────
+/uploads/*
+!/uploads/.htaccess
+/sessions/
+/scratch/
+ai_debug.log
+mysqld.dmp
+*.log
+
+# ─── Vendor / dependencies ──────────────────────────────────────────────────
+/vendor/
+/node_modules/
+composer.lock
+package-lock.json
+
+# ─── Build / OS cruft ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+._*
+
+# ─── Editors / IDEs ─────────────────────────────────────────────────────────
+.idea/
+.vscode/
+.cursor/
+*.swp
+*.swo
+*~
+.claude/
+
+# ─── Throwaway binaries / media that shouldn't be in version control ─────────
+psftp.exe
+*.exe
+WhatsApp Image*.jpeg
+WhatsApp Image*.jpg
+
+# ─── One-off / debug scripts kept out of history ────────────────────────────
+# (Keep them locally for ad-hoc use, but they aren't part of the app.)
+debug_cats.php
+debug_db.php
+deploy.php
+fix_admin_role.php
+migrate3.php
+read_cols.php
+repair_roles.php
+test_ftp.ps1

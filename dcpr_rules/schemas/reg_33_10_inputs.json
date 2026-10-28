@@ -1,0 +1,89 @@
+{
+  "regulation_key": "33(10)",
+  "title": "SRA Development Planning — Input Schema",
+  "version": 1,
+  "note": "Fields required to run the 33(10) calculator. `regulation_ref` cites the DCPR clause governing that input. All areas can be entered in sqm; sqft equivalents are auto-computed. Fields with `source: proposal` pre-fill from the parent proposal row.",
+
+  "groups": [
+    {
+      "key": "basic",
+      "title": "Basic Project Information",
+      "help": "Identifiers and location. Most fields pre-fill from the accepted proposal.",
+      "fields": [
+        {"key": "cts_number",     "label": "CTS Number",       "type": "string",  "required": true,  "source": "user",     "help": "e.g. 1(PT)"},
+        {"key": "village",        "label": "Village",          "type": "string",  "required": true,  "source": "proposal", "help": "Revenue village"},
+        {"key": "ward",           "label": "Ward",             "type": "string",  "required": true,  "source": "user",     "help": "e.g. N, K/W, L, M, S, T"},
+        {"key": "location",       "label": "Location",         "type": "string",  "required": true,  "source": "proposal", "help": "e.g. Ghatkopar (W)"},
+        {"key": "site_address",   "label": "Site Address",     "type": "textarea","required": false, "source": "proposal"},
+        {"key": "pincode",        "label": "Pincode",          "type": "string",  "required": false, "source": "proposal"},
+        {"key": "development_zone","label": "Development Zone","type": "select",  "required": true,  "source": "user",     "options": ["Island City", "Suburbs & Extended Suburbs", "Difficult Area"], "help": "Determines rehab-to-sale base ratio. Island City = 0.75, Suburbs = 1.00, Difficult Area = 1.30 (industry rounding of DCPR 1.333). Difficult-Area ratio REPLACES the large-scheme incentive (does not stack)."}
+      ]
+    },
+    {
+      "key": "land",
+      "title": "Plot Area & Site Constraints",
+      "help": "Gross plot and every deduction that reduces the FSI-computable area.",
+      "fields": [
+        {"key": "gross_plot_area_sqm",    "label": "Gross Plot Area",              "type": "number", "unit": "sqm", "required": true,  "source": "user",   "help": "Total plot before any deductions"},
+        {"key": "existing_land_use",      "label": "Existing Land Use",            "type": "string", "required": false, "source": "user"},
+        {"key": "proposed_land_use",      "label": "Proposed Land Use",            "type": "string", "required": false, "source": "user",   "default": "Residential Redevelopment (SRA)"},
+        {"key": "existing_structures",    "label": "Existing Structures Count",    "type": "number", "unit": "count", "required": false, "source": "user"},
+        {"key": "number_of_buildings_existing", "label": "Existing Buildings",     "type": "number", "unit": "count", "required": false, "source": "user"}
+      ]
+    },
+    {
+      "key": "road",
+      "title": "Road Access",
+      "help": "The widest abutting road governs FSI table lookups and 33(10) rehab-to-sale ratio.",
+      "fields": [
+        {"key": "primary_road_width_m",    "label": "Primary Road Width",         "type": "number", "unit": "m", "required": true, "source": "user", "regulation_ref": "33(10) Applicability + Reg 30 Table 12", "help": "Widest abutting road, e.g. 27.45"},
+        {"key": "secondary_road_width_m",  "label": "Secondary Road Width",       "type": "number", "unit": "m", "required": false,"source": "user"},
+        {"key": "existing_dp_road_width_m","label": "Existing DP Road Width",     "type": "number", "unit": "m", "required": false,"source": "user"},
+        {"key": "proposed_dp_road_width_m","label": "Proposed DP Road Width",     "type": "number", "unit": "m", "required": false,"source": "user"}
+      ]
+    },
+    {
+      "key": "deductions",
+      "title": "Land Deductions (per Reg 30(A)(2) & 14(A))",
+      "help": "Each deduction reduces the net plot area available for FSI computation. Every field cites its governing DCPR clause.",
+      "fields": [
+        {"key": "dp_road_setback_primary_sqm",   "label": "Primary DP Road Setback Deduction",   "type": "number", "unit": "sqm", "required": false, "source": "user", "regulation_ref": "Reg 30(A)(2)(a)", "help": "Land under primary DP road / road-widening"},
+        {"key": "dp_road_setback_secondary_sqm", "label": "Secondary DP Road Setback Deduction", "type": "number", "unit": "sqm", "required": false, "source": "user", "regulation_ref": "Reg 30(A)(2)(a)"},
+        {"key": "nalla_setback_sqm",             "label": "Nalla / Storm Water Setback",         "type": "number", "unit": "sqm", "required": false, "source": "user", "regulation_ref": "Reg 30(A)(2)(a)", "help": "Setback from major nalla / water body"},
+        {"key": "reservation_area_ros_sqm",      "label": "Recreational Open Space (ROS 2.7 / Green Belt)","type": "number", "unit": "sqm", "required": false, "source": "user", "regulation_ref": "Reg 30(A) Note (1)", "help": "ROS required under Reg 27 is a physical set-aside but is NOT deducted for FSI/BUA computation (Reg 30(A) Note 1)."},
+        {"key": "reservation_area_other_sqm",    "label": "Other DP Reservation Area (School / Garden / Chowky etc.)","type": "number", "unit": "sqm", "required": false, "source": "user", "regulation_ref": "Reg 30(A)(2)(a)", "help": "DP reservations OTHER than ROS. These DO reduce the FSI-computable area."},
+        {"key": "amenity_plot_sqm",              "label": "Amenity Plot (per Reg 14(A))",        "type": "number", "unit": "sqm", "required": false, "source": "user", "regulation_ref": "Reg 14(A)", "help": "Auto-computed if left blank: applies statutory % of gross plot area per Reg 14(A). Enter override only if a different area is being surrendered."},
+        {"key": "other_deduction_sqm",           "label": "Other Deductions",                    "type": "number", "unit": "sqm", "required": false, "source": "user"},
+        {"key": "plot_area_for_fsi_sqm",         "label": "Plot Area for FSI Computation (with add-backs)","type": "number", "unit": "sqm", "required": false, "source": "user", "regulation_ref": "Reg 30(A)(2)", "help": "Optional. Net plot + areas added back (DP road, ROS, buildable reservations). Leave blank to use Net Plot Area. Malad-E-style projects: enter the 'plot for FSI' from your feasibility (typically gross − nalla − amenity)."},
+        {"key": "reservation_area_buildable_total_sqm", "label": "Buildable Reservation (School / Higher Ed / Market) — Total Area","type": "number", "unit": "sqm", "required": false, "source": "user", "regulation_ref": "Reg 33(10) / Reg 33(7) 7(f)", "help": "Raw area of buildable reservation being handed over (e.g. RE 1.1 Municipal School). Informational — actual deducted portion goes in 'Other DP Reservation' field above."},
+        {"key": "buildable_reservation_sale_incentive_sqm", "label": "Sale Incentive from Buildable Reservation Handover", "type": "number", "unit": "sqm", "required": false, "source": "user", "regulation_ref": "Reg 33(10)", "default": 0, "help": "Additional sale BUA earned by handing over a buildable reservation (e.g. Municipal School). Added on top of the rehab-component × sale-ratio. Malad-E ref: 4,230 sqm school → 1,912.15 sqm sale incentive."}
+      ]
+    },
+    {
+      "key": "rehab",
+      "title": "Rehabilitation Component Inputs (33(10) SRA)",
+      "help": "Everything about the eligible slum dwellers and rehab tenement design.",
+      "fields": [
+        {"key": "eligible_tenements",          "label": "Eligible Tenements",       "type": "number", "unit": "tenements", "required": true, "source": "user", "regulation_ref": "33(10) VI 1.5", "help": "Confirmed eligible hutment-dwellers after Slum Act Chapter I-B verification"},
+        {"key": "welfare_tenements",           "label": "Welfare / Balwadi / PAP Tenements", "type": "number", "unit": "tenements", "required": false, "source": "user", "default": 0, "help": "Adds to total rehab tenement count for maintenance deposit calc"},
+        {"key": "carpet_area_per_tenement_sqm","label": "Carpet Area per Rehab Tenement", "type": "number", "unit": "sqm", "required": true, "source": "user", "regulation_ref": "33(10) VI 1.1", "default": 25.0, "help": "Statutory minimum per DCPR 33(10) VI 1.1 = 25 sqm carpet (includes balcony, fungible, bath, WC — excl. common areas)."},
+        {"key": "rehab_loading_factor",        "label": "Rehab BUA Loading Factor",  "type": "number", "unit": "ratio", "required": true, "source": "user", "default": 1.283, "help": "Multiplier applied to carpet to get BUA per tenement (walls + staircase + lift wells + common passages). Typical Mumbai high-rise SRA: 1.25–1.30. Ghatkopar reference verified at 1.283."},
+        {"key": "amenity_common_area_sqm",     "label": "Amenity Common Area (Balwadi, WC, Society Office, Common Passage)", "type": "number", "unit": "sqm", "required": false, "source": "user", "regulation_ref": "33(10) VIII 3.10"},
+        {"key": "rehab_buildings_count",       "label": "Number of Rehab Buildings", "type": "number", "unit": "count", "required": false, "source": "user"},
+        {"key": "religious_structures_sqm",    "label": "Religious Structures BUA",  "type": "number", "unit": "sqm", "required": false, "source": "user", "regulation_ref": "33(10) VIII 3.2", "default": 0, "help": "Per GR 05/05/2011 & 18/11/2015 — counted in rehab component"},
+        {"key": "social_infra_sqm",            "label": "Social Infra (School / Dispensary / Gymnasium)", "type": "number", "unit": "sqm", "required": false, "source": "user", "default": 0}
+      ]
+    },
+    {
+      "key": "additional",
+      "title": "Additional Planning Inputs",
+      "help": "Fungible strategy, TDR intent, in-situ constraints.",
+      "fields": [
+        {"key": "apply_fungible_pct",         "label": "Fungible % to Apply",     "type": "number", "unit": "percent", "required": true, "source": "user", "default": 35, "regulation_ref": "Reg 31(3)", "help": "Statutory max 35% (res). Fungible on rehab component is free of premium; fungible on sale is chargeable."},
+        {"key": "in_situ_fsi_cap",            "label": "In-Situ FSI Cap",         "type": "number", "unit": "ratio", "required": true, "source": "user", "default": 4.0, "regulation_ref": "33(10) VIII 3.8", "help": "Statutory in-situ maximum is 4.0. Balance goes to TDR."},
+        {"key": "sale_bua_proposed_in_situ_sqm", "label": "Sale BUA Proposed in Situ", "type": "number", "unit": "sqm", "required": false, "source": "user", "help": "Optional — how much sale BUA the developer intends to build on the plot. Balance is available as TDR."},
+        {"key": "tenement_density_actual",    "label": "Actual Tenement Density (per net ha)", "type": "number", "unit": "per ha", "required": false, "source": "user", "regulation_ref": "33(10) VIII", "help": "If existing density > 650/ha, CEO SRA may allow in-situ FSI > 4"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "regulation_key": "33(11)",
+  "title": "Permanent Transit Camp / Rental Housing (SRA) — Input Schema",
+  "version": 1,
+  "note": "Fields for Reg 33(11) redevelopment. Verified against Bhagwan Apartment (Worli), Abdul Court+Kachwalla (Mahim), JAI GIRNAR (Tardeo). Total permissible FSI up to 5.40 (4.0 + 35% fungible). Split: 63% Additional to SRA-PTC, 37% Additional + Zonal to Sale+Society.",
+
+  "groups": [
+    {
+      "key": "basic",
+      "title": "Basic Project Information",
+      "help": "Site identifiers and location.",
+      "fields": [
+        {"key": "cts_number",    "label": "CTS / FP Number",  "type": "string",   "required": true,  "source": "user"},
+        {"key": "village",       "label": "Village",           "type": "string",   "required": true,  "source": "proposal"},
+        {"key": "ward",          "label": "Ward",              "type": "string",   "required": true,  "source": "user", "help": "e.g. G/S (Worli), G/N (Mahim), D (Tardeo)"},
+        {"key": "location",      "label": "Location",          "type": "string",   "required": true,  "source": "proposal"},
+        {"key": "site_address",  "label": "Site Address",      "type": "textarea", "required": false, "source": "proposal"},
+        {"key": "pincode",       "label": "Pincode",           "type": "string",   "required": false, "source": "proposal"},
+        {"key": "development_zone","label": "Development Zone","type": "select",   "required": true,  "source": "user", "options": ["Island City", "Suburbs & Extended Suburbs"], "help": "Determines Zonal FSI: Island 1.33, Suburbs 1.00"}
+      ]
+    },
+    {
+      "key": "land",
+      "title": "Plot & Deductions",
+      "fields": [
+        {"key": "gross_plot_area_sqm","label": "Gross Plot Area (as per PRC)","type": "number", "unit": "sqm", "required": true, "source": "user"},
+        {"key": "setback_area_sqm",   "label": "Setback / Encroachment Deduction","type": "number", "unit": "sqm", "required": false, "source": "user", "default": 0},
+        {"key": "amenity_deduction_sqm","label": "Amenity Deduction (Reg 14A, if any)","type": "number", "unit": "sqm", "required": false, "source": "user", "default": 0}
+      ]
+    },
+    {
+      "key": "road",
+      "title": "Road Access",
+      "help": "Widest abutting road governs the Additional FSI cap.",
+      "fields": [
+        {"key": "primary_road_width_m","label": "Primary Road Width","type": "number", "unit": "m", "required": true, "source": "user", "regulation_ref": "33(11) Table A"},
+        {"key": "existing_dp_road_width_m","label": "Existing DP Road Width","type": "number", "unit": "m", "required": false, "source": "user"}
+      ]
+    },
+    {
+      "key": "existing",
+      "title": "Existing Society Data",
+      "fields": [
+        {"key": "existing_carpet_area_sqft","label": "Existing MOFA Carpet Area","type": "number", "unit": "sqft", "required": true, "source": "user"},
+        {"key": "existing_consumed_fsi",    "label": "Existing Consumed FSI",     "type": "number", "unit": "ratio", "required": false, "source": "user"},
+        {"key": "number_of_flats",          "label": "Number of Flats / Tenants","type": "number", "unit": "count", "required": true, "source": "user"},
+        {"key": "number_of_buildings",      "label": "Number of Buildings",       "type": "number", "unit": "count", "required": false, "source": "user", "default": 1}
+      ]
+    },
+    {
+      "key": "fsi",
+      "title": "FSI Inputs (Reg 33(11) Table A)",
+      "help": "Zonal + Additional FSI. Additional caps at 2.67 (Island) or 3.00 (Suburbs) depending on road width. NKPC industry practice uses max Additional for road ≥ 18m even on small plots.",
+      "fields": [
+        {"key": "zonal_fsi",       "label": "Zonal FSI",        "type": "number", "unit": "ratio", "required": true, "source": "user", "default": 1.33, "regulation_ref": "33(11) Table A", "help": "1.33 for Island City, 1.00 for Suburbs. Override if needed."},
+        {"key": "additional_fsi",  "label": "Additional FSI (road-width based)","type": "number", "unit": "ratio", "required": true, "source": "user", "default": 2.67, "regulation_ref": "33(11) Table A", "help": "Max 2.67 (Island, road ≥ 18m) or 3.00 (Suburbs, road ≥ 18m)."},
+        {"key": "sra_additional_share_pct","label": "SRA-PTC Share of Additional FSI (%)","type": "number", "unit": "percent", "required": true, "source": "user", "default": 63, "regulation_ref": "33(11) sub-clause A · industry 63/37"},
+        {"key": "apply_fungible_pct","label": "Fungible % to Apply", "type": "number", "unit": "percent", "required": true, "source": "user", "default": 35, "regulation_ref": "Reg 31(3)", "help": "35% for residential."}
+      ]
+    },
+    {
+      "key": "rehab",
+      "title": "Society Rehabilitation Inputs",
+      "help": "Existing members' new-tenement entitlement over the existing carpet.",
+      "fields": [
+        {"key": "additional_carpet_mofa_pct","label": "Additional Carpet % (MOFA)","type": "number", "unit": "percent", "required": true, "source": "user", "default": 50, "help": "Typical Worli/Mahim: 50%. JAI GIRNAR Tardeo: 30%. Adjust per plot's tier."},
+        {"key": "additional_carpet_rera_pct","label": "Additional Carpet % (RERA)","type": "number", "unit": "percent", "required": true, "source": "user", "default": 55, "help": "MOFA + 5% typically."},
+        {"key": "carpet_to_bua_loading_factor","label": "Carpet → BUA loading","type": "number", "unit": "ratio", "required": true, "source": "user", "default": 1.32, "help": "Multiplier to convert carpet to BUA (walls, common, lift). Typical 1.25-1.35."}
+      ]
+    },
+    {
+      "key": "sra_ptc_cost",
+      "title": "PTC Handover Cost Inputs",
+      "fields": [
+        {"key": "ptc_tenement_purchase_cost_inr","label": "Cost per PTC Tenement to Purchase","type": "number", "unit": "INR", "required": false, "source": "user", "default": 8500000, "help": "Bhagwan Worli reference: ₹85 lakh/tenement. Varies by location."},
+        {"key": "num_ptc_tenements_to_purchase", "label": "Number of PTC Tenements Required","type": "number", "unit": "count", "required": false, "source": "user", "help": "Auto-computed if left blank based on SRA share BUA and 25 sqm carpet per PTC tenement."}
+      ]
+    }
+  ]
+}

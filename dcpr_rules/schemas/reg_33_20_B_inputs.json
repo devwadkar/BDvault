@@ -1,0 +1,70 @@
+{
+  "regulation_key": "33(20)(B)",
+  "title": "Affordable Housing on Private Land — Input Schema",
+  "version": 1,
+  "note": "For a plot voluntarily developed under 33(20)(B). Full FSI stack: Zonal (Reg 30) + Gov FSI (0.5) + TDR (0.9 split slum/general) + 33(7)(B) incentive + Road setback + 33(20)(B) additional (50/50 owner/AH).",
+
+  "groups": [
+    {
+      "key": "basic",
+      "title": "Basic Project Information",
+      "fields": [
+        {"key": "cts_number",     "label": "CTS Number",  "type": "string",   "required": true, "source": "user"},
+        {"key": "village",        "label": "Village",     "type": "string",   "required": true, "source": "proposal"},
+        {"key": "ward",           "label": "Ward",        "type": "string",   "required": true, "source": "user"},
+        {"key": "location",       "label": "Location",    "type": "string",   "required": true, "source": "proposal"},
+        {"key": "site_address",   "label": "Site Address","type": "textarea", "required": false,"source": "proposal"},
+        {"key": "pincode",        "label": "Pincode",     "type": "string",   "required": false,"source": "proposal"},
+        {"key": "development_zone","label": "Development Zone","type": "select","required": true, "source": "user", "options": ["Island City", "Suburbs & Extended Suburbs"], "help": "Zonal FSI: Island 1.33, Suburbs 1.00"}
+      ]
+    },
+    {
+      "key": "land",
+      "title": "Plot & Deductions",
+      "fields": [
+        {"key": "gross_plot_area_sqm","label": "Gross Plot Area (per PRC)","type": "number", "unit": "sqm", "required": true, "source": "user"},
+        {"key": "setback_area_sqm",   "label": "Setback Area (DP road, RL etc.)","type": "number", "unit": "sqm", "required": false, "source": "user", "default": 0},
+        {"key": "aos_deduction_sqm",  "label": "Proportionate AOS Deduction (plots > 4000 sqm)","type": "number", "unit": "sqm", "required": false, "source": "user", "default": 0, "help": "35% AOS × threshold for large plots per Reg 14(A)"}
+      ]
+    },
+    {
+      "key": "road",
+      "title": "Road & Existing Structure",
+      "fields": [
+        {"key": "primary_road_width_m",   "label": "Primary Road Width","type": "number", "unit": "m", "required": true, "source": "user"},
+        {"key": "existing_bua_sqm",       "label": "Existing Approved BUA (per OC)","type": "number", "unit": "sqm", "required": true, "source": "user", "help": "Used for 33(7)(B) incentive: 15% of this."},
+        {"key": "num_existing_tenants",   "label": "Number of Existing Tenants","type": "number", "unit": "count", "required": true, "source": "user", "help": "Used for 33(7)(B) alt: 10 sqm × tenants."},
+        {"key": "num_existing_buildings", "label": "Number of Existing Buildings","type": "number", "unit": "count", "required": false, "source": "user", "default": 1}
+      ]
+    },
+    {
+      "key": "fsi_base",
+      "title": "Reg 30(A) Base FSI Stack",
+      "help": "Zonal + Gov FSI (on premium) + TDR. Total up to Zonal + 1.4 typically.",
+      "fields": [
+        {"key": "zonal_fsi",              "label": "Zonal FSI",   "type": "number", "unit": "ratio", "required": true, "source": "user", "default": 1.0, "regulation_ref": "Reg 30 Table 12"},
+        {"key": "govt_fsi_on_premium",    "label": "Additional Gov FSI on Premium","type": "number", "unit": "ratio", "required": true, "source": "user", "default": 0.5, "regulation_ref": "Reg 30(A)(1)(A)"},
+        {"key": "tdr_permissible_fsi",    "label": "Additional Permissible TDR","type": "number", "unit": "ratio", "required": true, "source": "user", "default": 0.9, "regulation_ref": "Reg 30 Table 12 + Reg 32"},
+        {"key": "slum_tdr_share_of_tdr_pct","label": "Slum TDR Share of Total TDR (%)","type": "number", "unit": "percent", "required": true, "source": "user", "default": 20, "regulation_ref": "Reg 30(A)(6) proviso — 20-50%", "help": "Min 20%, Max 50%"}
+      ]
+    },
+    {
+      "key": "incentives",
+      "title": "33(7)(B) Incentive + Road Setback",
+      "help": "Reduce the General TDR purchase burden.",
+      "fields": [
+        {"key": "apply_33_7B_incentive",   "label": "Apply 33(7)(B) Incentive?","type": "select", "required": true, "source": "user", "options": ["Yes", "No"], "default": "Yes", "help": "Applies if building > 30 years old"},
+        {"key": "road_setback_advantage_sqm","label": "Road Setback BUA Advantage","type": "number", "unit": "sqm", "required": false, "source": "user", "default": 0, "help": "Setback merged with DP road — counted ONCE"}
+      ]
+    },
+    {
+      "key": "additional_33_20B",
+      "title": "33(20)(B) Additional Split",
+      "fields": [
+        {"key": "target_total_fsi_cap",   "label": "Target Total FSI Cap (before fungible)","type": "number", "unit": "ratio", "required": true, "source": "user", "default": 4.0, "regulation_ref": "33(20)(B) A cap"},
+        {"key": "owner_ah_split_pct",     "label": "Owner Share of Additional 33(20)(B) FSI (%)","type": "number", "unit": "percent", "required": true, "source": "user", "default": 50, "regulation_ref": "33(20)(B) — 50/50"},
+        {"key": "apply_fungible_pct",     "label": "Fungible % to Apply","type": "number", "unit": "percent", "required": true, "source": "user", "default": 35, "regulation_ref": "Reg 31(3)"}
+      ]
+    }
+  ]
+}

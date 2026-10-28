@@ -1,0 +1,99 @@
+{
+  "regulation_key": "30",
+  "title": "Floor Space Indices & BUA computation, Tenement Density and Protected Development",
+  "part": "V",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "source_pdf_lines": {"start": 6940, "end": 7308},
+
+  "table_12_basic_fsi": {
+    "description": "Zone-wise permissible FSI by road width. Columns: zonal (basic), additional on premium, admissible TDR, permissible (sum).",
+    "island_city": {
+      "residential_commercial": [
+        {"road_width_min_m": 0,     "road_width_max_m": 9.0,   "zonal_fsi": 1.33, "additional_fsi_premium": 0.00, "admissible_tdr": 0.00, "permissible_fsi": 1.33},
+        {"road_width_min_m": 9.0,   "road_width_max_m": 12.20, "zonal_fsi": 1.33, "additional_fsi_premium": 0.34, "admissible_tdr": 0.33, "permissible_fsi": 2.00},
+        {"road_width_min_m": 12.20, "road_width_max_m": 18.30, "zonal_fsi": 1.33, "additional_fsi_premium": 0.62, "admissible_tdr": 0.45, "permissible_fsi": 2.40},
+        {"road_width_min_m": 18.30, "road_width_max_m": 30.00, "zonal_fsi": 1.33, "additional_fsi_premium": 0.73, "admissible_tdr": 0.64, "permissible_fsi": 2.70},
+        {"road_width_min_m": 30.00, "road_width_max_m": null,  "zonal_fsi": 1.33, "additional_fsi_premium": 0.84, "admissible_tdr": 0.83, "permissible_fsi": 3.00}
+      ],
+      "industrial": [
+        {"road_width_min_m": 0, "road_width_max_m": null, "zonal_fsi": 1.00, "additional_fsi_premium": 0.50, "admissible_tdr": 0.50, "permissible_fsi": 2.00, "note": "TDR in I Zone only for I Zone uses excl. hazardous (per Reg 34.3 Table C)"}
+      ]
+    },
+    "suburbs_and_extended_suburbs": {
+      "special_zones": [
+        {"area": "BARC (M Ward) + N Ward bounded by EE Highway/N-boundary/Thane creek/S-boundary", "permissible_fsi": 0.75, "note": "No additional FSI, no TDR"},
+        {"area": "Aksa/Marve + CRZ-affected Erangal in P-North; Gorai/Manori in R Ward (excl. gaothan)", "permissible_fsi": 0.50, "note": "No additional FSI, no TDR"}
+      ],
+      "residential_commercial_remaining": [
+        {"road_width_min_m": 0,     "road_width_max_m": 9.0,   "zonal_fsi": 1.00, "additional_fsi_premium": 0.00, "admissible_tdr": 0.00, "permissible_fsi": 1.00},
+        {"road_width_min_m": 9.0,   "road_width_max_m": 12.20, "zonal_fsi": 1.00, "additional_fsi_premium": 0.50, "admissible_tdr": 0.50, "permissible_fsi": 2.00},
+        {"road_width_min_m": 12.20, "road_width_max_m": 18.30, "zonal_fsi": 1.00, "additional_fsi_premium": 0.50, "admissible_tdr": 0.70, "permissible_fsi": 2.20},
+        {"road_width_min_m": 18.30, "road_width_max_m": 30.00, "zonal_fsi": 1.00, "additional_fsi_premium": 0.50, "admissible_tdr": 0.90, "permissible_fsi": 2.40},
+        {"road_width_min_m": 30.00, "road_width_max_m": null,  "zonal_fsi": 1.00, "additional_fsi_premium": 0.50, "admissible_tdr": 1.00, "permissible_fsi": 2.50}
+      ],
+      "industrial": [
+        {"road_width_min_m": 0, "road_width_max_m": null, "zonal_fsi": 1.00, "additional_fsi_premium": 0.50, "admissible_tdr": 0.50, "permissible_fsi": 2.00, "note": "TDR in I Zone only for I Zone uses excl. hazardous"}
+      ]
+    }
+  },
+
+  "gross_plot_deductions": {
+    "description": "Areas deducted from gross plot before FSI computation (Reg 30(A)(2)).",
+    "deducted": [
+      "Land under DP Roads / roads with sanctioned Regular line per MMC Act",
+      "Land under DP Reservations",
+      "Land to be surrendered to MCGM under Reg 14 (amenity plots)",
+      "Land to be surrendered to MCGM under Reg 15 (inclusive housing)",
+      "Land to be surrendered to MCGM under Reg 16 & 17"
+    ],
+    "compensation": [
+      "Additional BUA per Reg 32(1) Table 12(A) equal to surrendered area is allowed on remainder plot, over and above permissible BUA, OR can be availed as TDR",
+      "BUA equal to surrendered area can be utilized even before availing additional FSI on premium/TDR",
+      "If owner cannot consume even zonal FSI due to planning constraints, TDR is allowed for unconsumed BUA"
+    ]
+  },
+
+  "premium_for_additional_fsi": {
+    "formula": "premium = additional_fsi_bua_sqm * asr_land_rate_for_fsi_1 * 0.60",
+    "rate_pct_of_asr": 60,
+    "sharing": "State Government 50% : MCGM 50%",
+    "utilization_note": "Additional FSI on premium is non-transferable; must be used on same plot only",
+    "combination_note": "Additional-FSI-premium and TDR can be used in any combination, subject to permissible FSI cap in Table 12 column 7"
+  },
+
+  "tdr_utilization_mandate": {
+    "min_slum_tdr_pct_of_admissible": 20,
+    "max_slum_tdr_pct_of_admissible": 50,
+    "source_regulation": "Reg 30(A)(6) proviso"
+  },
+
+  "development_surcharge_cess": {
+    "rate_pct_of_development_charge": 100,
+    "applies_to": "BUA over and above Zonal (basic) FSI, excluding fungible compensatory area BUA",
+    "excluded_regulations": ["33(3)", "33(5)", "33(7)", "33(7)(A)", "33(8)", "33(9)", "33(9)(B)", "33(10)", "33(11)"],
+    "note": "Not applicable to BUA handed over to MCGM/Appropriate Authority or excluded from FSI. Not applicable to Govt/MCGM departmental proposals."
+  },
+
+  "tenement_density": {
+    "max_per_ha_at_fsi_1": 450,
+    "min_per_ha_at_fsi_1": 200,
+    "min_for_rehab_resettlement_affordable_per_ha_at_fsi_1": 325,
+    "note": "Scales proportionally with FSI. Minimum applies only to plots ≥ 1 ha and sub-divided plots each ≥ 1 ha."
+  },
+
+  "protected_development": {
+    "description": "Existing authorized BUA is protected during redevelopment; additional FSI as per applicable regulations may be availed on top.",
+    "loss_of_protection": "If user category (educational, medical, hotel, religious, IT) is discontinued during redevelopment, additional BUA from that category is not protected and premium already paid is not refundable."
+  },
+
+  "fungible_reference": "See Reg 31(3) — Fungible FSI Compensatory Area is over and above permissible FSI per Table 12 column 7",
+
+  "notes_from_source": [
+    "Recreational open space (Reg 27) is NOT deducted from BUA/FSI computation.",
+    "If plot was previously affected by road/DP reservation and FSI benefit was already taken but ownership not transferred to MCGM, gross plot area is reckoned AFTER deducting such areas.",
+    "OC for last 25% of admissible FSI (res/com) granted only after recreational area is developed and structures completed.",
+    "For Central/State Govt/PSU (Atomic Energy, Civil Aviation, AAI, Defence, Railways, Mumbai Port Trust) certain areas are excluded from FSI calc: playgrounds, stadia, golf, parade/training/firing grounds, green areas in complexes, operational lands, major internal roads, railway tracks/yards, unauthorized reclaimed lands, airfield lands."
+  ]
+}

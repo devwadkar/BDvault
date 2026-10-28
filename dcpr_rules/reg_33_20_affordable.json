@@ -1,0 +1,86 @@
+{
+  "regulation_key": "33(20)",
+  "title": "Affordable Housing (AH) / Rehabilitation & Resettlement (R&R)",
+  "part": "VI",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "source_pdf_lines": {"start": 15614, "end": 15794},
+
+  "scope": "Affordable Housing (AH) and Rehabilitation & Resettlement (R&R) construction — for housing those displaced by projects (DP / MUTP / MUIP / vital public projects). Categories: EWS, LIG, MIG, or Rental Housing.",
+
+  "part_A_govt_authority_plots": {
+    "scope": "Development on plots earmarked/reserved for AH/R&R on land of MCGM / Govt. / Appropriate Authority (or unreserved plots in their possession)",
+    "fsi_table": [
+      {"plot_area_max_sqm": 2000, "min_road_width_m": 12, "max_fsi": 3.00},
+      {"plot_area_min_sqm": 2000, "min_road_width_m": 18, "max_fsi": 4.00}
+    ],
+    "tenement_min_carpet_sqm": 25,
+    "eligible_categories": ["EWS", "LIG", "MIG", "Rental Housing"],
+    "not_permissible_categories": "Any tenement type other than the above",
+    "fungible_premium": "None (fungible + Reg 31(1) items free of premium for AH/R&R)",
+    "offsite_infrastructure_charges_pct_of_asr_land_rate": 7,
+    "infra_fund_share_ratio": "5/7 of the 7% goes to infrastructure development fund",
+    "applies_to_bua": "Over Zonal (basic) FSI",
+    "allotment_deadline_from_OC_months": 12,
+    "sale_proceeds_utilization": {
+      "for_dp_implementation_pct": 50,
+      "for_other_AH_R_R_pct": 50,
+      "note": "After deduction of dev cost + off-site infra charges"
+    },
+    "convenience_shopping_along_layout_road_pct_of_zonal_fsi": 25,
+    "land_lease": "Land with approved BUA leased to society of building occupants",
+    "note_r_r_reserved_land": "MCGM/Public Authority may develop AH/R&R on R&R-reserved plots; NOT applicable when private owner undertakes development"
+  },
+
+  "part_B_private_or_other_plots": {
+    "scope": "Development on private plot OR plot of authority other than Govt/MCGM/Appropriate Authority, on non-reserved/non-designated land — with AH/R&R handed over free of cost to MCGM",
+    "fsi_distribution_table": {
+      "island_city": [
+        {"plot_area_max_sqm": 2000, "min_road_width_m": 12, "total_permissible_fsi": 3.0, "zonal_fsi": 1.33, "additional_fsi": 1.67, "transit_share": 1.0},
+        {"plot_area_min_sqm": 2000, "min_road_width_m": 18, "total_permissible_fsi": 4.0, "zonal_fsi": 1.33, "additional_fsi": 2.67, "sale_share_pct": 63, "transit_share_pct": 37}
+      ],
+      "suburbs_and_extended_suburbs": [
+        {"plot_area_max_sqm": 2000, "min_road_width_m": 12, "total_permissible_fsi": 3.0, "zonal_fsi": 1.00, "additional_fsi": 2.00, "transit_share": 1.50, "sale_share": 1.50, "note": "50/50 split"},
+        {"plot_area_min_sqm": 2000, "min_road_width_m": 18, "total_permissible_fsi": 4.0, "zonal_fsi": 1.00, "additional_fsi": 3.00}
+      ]
+    },
+    "not_permissible_zones": ["SDZ (Special Development Zone)", "GZ (Green Zone)"],
+    "tenement_min_carpet_sqm": 25,
+    "eligible_categories": ["EWS", "LIG", "MIG"],
+    "bua_to_carpet_ratio": 1.2,
+    "carpet_excludes": "Features permissible free of FSI per Reg 31",
+
+    "handover_marking_requirement": "Owner declares intent up-front; AH/R&R clearly marked on plan as 'to be handed over to MCGM'",
+
+    "release_of_additional_fsi": {
+      "correlation_ratio": "0.5 sale : 1 AH/R&R area released proportionally",
+      "final_sale_release": "100% sale released only after entire AH/R&R handover to MCGM",
+      "tdr_alternative": "TDR permitted in lieu of unconsumed sale component; 20% of TDR withheld until full AH handover"
+    },
+
+    "occupation_certificate_condition": "OC for sale portion granted only AFTER AH/R&R handover to MCGM",
+
+    "fungible_premium": "None (fungible + Reg 31 free for AH/R&R portion; premium applies to owner's share where required)",
+    "offsite_infrastructure_charges_pct_of_asr_land_rate": 7,
+    "applies_to_bua": "Over Zonal (basic) FSI",
+    "zonal_fsi_use_by_owner": "Zonal + column (7) BUA usable for zone-permissible uses",
+    "convenience_shopping_along_layout_road_pct_of_zonal_fsi": 25
+  },
+
+  "part_C_shramsafalya_ashray_yojana": {
+    "applicability": "Constructed under provisions of (A) or (B) with special permission of Municipal Commissioner",
+    "tenement_size": "Governed by requirements of Shramsafalya/Ashray schemes"
+  },
+
+  "cross_references": {
+    "reg_31_1_31_3_fungible": "Free of premium for AH/R&R",
+    "reg_32_tdr": "TDR in lieu of unconsumed sale component (20% withheld until AH handover)",
+    "reg_33_10": "Amenity list and other relaxations sometimes borrowed",
+    "reg_17": "R&R-reserved plot development option"
+  },
+
+  "extraction_gaps": {
+    "calculator_status": "PENDING — needs a 33(20)(A) or 33(20)(B) feasibility to validate the sale/AH release proportions + TDR withholding formula before authoring Reg33_20_Calculator.php"
+  }
+}

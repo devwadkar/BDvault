@@ -1,0 +1,122 @@
+{
+  "regulation_key": "31",
+  "title": "Exempted from FSI / Counted in FSI / Fungible Compensatory Area",
+  "part": "V",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "source_pdf_lines": {"start": 7310, "end": 7681},
+
+  "fsi_exempted": {
+    "description": "Areas NOT counted in FSI computation.",
+    "items": [
+      "ROSLOS structures per Reg 27(1)(g)",
+      "Features in open spaces per Reg 42 (except specified sub-clauses)",
+      "Staircase rooms, lift machine rooms above top storey, lift-wells/passages in stilt, basement and floors exclusively for parking",
+      "Basement used exclusively for parking (per Reg 37)",
+      "Covered parking spaces per Reg 44(6)(a); additional parking up to 25%/50% of required parking without premium",
+      "Non-residential mechanical/automatic parking: additional 10%/20% free of FSI",
+      "One office room per Reg 37(119)",
+      "Lofts, porches, canopy per Reg 37",
+      "STP/ETP/WTP structures required by MPCB",
+      "Chajja/cornice/weather shade/sun-breaker at lintel level projecting ≤ 1.2 m",
+      "Water reservoirs/tanks (elevated or underground), electric sub-stations, pump houses, wet-waste treatment",
+      "New lift + passage in existing bldg ≤ 16m in Island City",
+      "Covered passage ≤ 1.52m from terrace lift to existing staircase",
+      "One fitness centre/yogalaya per society",
+      "Fire chutes (Reg 48(9))",
+      "Refuge areas (Reg 48(8))",
+      "Service floor ≤ 1.8 m height",
+      "Entrance lobbies in stilt, height ≤ 7.2 m or two-floor equivalent",
+      "Open-to-sky swimming pool at top terrace or top podium only",
+      "Service ducts abutting sanitary block/kitchen ≤ 1.2 m width (up to 2 m for high-rise)",
+      "Ornamental façade projection ≤ 0.30 m (or 0.60 m for non-residential)",
+      "Chimneys, elevated tanks (floor-to-tank clearance ≤ 1.5 m)",
+      "Sanitary block for domestic servants ≤ 2.2 sqm at mid-landing/stilt; ≤ 2.2 sqm per parking floor for drivers",
+      "Letter boxes, parking floors per Reg 37(3230), DG-set areas at stilt/podium",
+      "Electrical/fire duct ≤ 0.45 m width, not abutting habitable room",
+      "Electric meter room 10 sqm per 50 tenements",
+      "Refuse chute/garbage shaft",
+      "Elevation feature / dome above water tank (up to 2/6/9 m by bldg height, with ≥ 60% voids)",
+      "Rain Water Harvesting, Non-conventional Energy System",
+      "Advertisements/sky signs, ≤ 20 sqm telecom antenna on top terrace",
+      "Cooling towers/chilling plants beyond marginal open spaces or on terrace",
+      "Laundry/boiler room for hotels/hospitals/hostels",
+      "Solar-water-heater battery back-up ≤ 5 sqm in basement or terrace",
+      "Entry gate over arch"
+    ]
+  },
+
+  "fsi_counted": {
+    "description": "Areas COUNTED in FSI.",
+    "items": [
+      "Covered parking/garage per Reg 44(6)(d)",
+      "Fire escape balcony per Reg 48(6)",
+      "Sanitary block for domestic servants beyond 31(1)(xxvi)",
+      "Part/pocket/covered terraces (except top-storey open terrace and specified exceptions)",
+      "Area below open-to-sky swimming pool with clearance > 1.5 m",
+      "AC plant room / AHU room / DG set room (except in basement)",
+      "Service floor height > 1.8 m",
+      "Balconies per Reg 37(20)",
+      "Niches below window sill",
+      "Additional telephone/PBX rooms beyond one per building",
+      "Ornamental projections and voids (except allowed under 31(1)(ii))",
+      "Excess parking floors beyond required (with paid premium)",
+      "Deck parking on habitable floors",
+      "Covered swimming pool",
+      "Excess telecom antenna area > 20 sqm on top terrace"
+    ]
+  },
+
+  "fungible_compensatory_area": {
+    "regulation": "31(3)",
+    "max_pct": {
+      "residential": 35,
+      "industrial_commercial": 20,
+      "commercial_mall_multiplex_extra_corridor": 10
+    },
+    "premium_rate_pct_of_asr_fsi_1": {
+      "residential": 60,
+      "industrial_commercial": 80,
+      "commercial_extra_corridor": 80
+    },
+    "premium_sharing": {
+      "MCGM_pct": 50,
+      "State_Govt_pct": 30,
+      "MSRDC_Sea_Link_pct": 20
+    },
+
+    "no_premium_conditions": {
+      "on_rehab_component_under": ["33(5)", "33(6)", "33(7)", "33(7)(A)", "33(7)(B)", "33(8)", "33(9)", "33(9)(B)", "33(20)", "33(10)"],
+      "on_existing_bua_under": ["33(5)", "33(6)", "33(7)(B)"],
+      "on_existing_bua_for_suburb_redevelopment_with_TDR_or_premium_FSI_under": "33(5)",
+      "full_scheme_no_premium": ["33(15)", "33(3)"]
+    },
+    "rebate_50pct_on_premium_under": ["33(2)"],
+    "no_rebate_for": "33(2)(A) private medical institutions",
+
+    "usage_rules": [
+      "Fungible on rehab component cannot be used for free-sale component",
+      "Fungible admissible to one rehab tenement cannot be transferred to another rehab tenement",
+      "Fungible must be used to give additional area over-and-above eligible area to existing tenants/occupants",
+      "Applicable only to buildings to be constructed or reconstructed"
+    ],
+
+    "open_space_deficiency_due_to_fungible": {
+      "premium_pct_of_normal_premium": 25,
+      "note": "Deficiency in open space created due to utilization of fungible compensatory area is condoned by charging premium at 25% of normal premium"
+    },
+
+    "grandfathering": {
+      "prior_dcr_1991_fungible_under_reg_35_4": "Continues as fungible compensatory area under Reg 31(3) — no premium demanded, refunded, or adjusted"
+    },
+
+    "premium_utilization": "Premium amount collected shall be kept in a separate account to be utilized for infrastructure development.",
+
+    "industry_practice_note": {
+      "observed_formula_ghatkopar_feasibility": "FC FSI area × ASR (land rate) × 50%",
+      "dcpr_text_formula": "FC FSI area × ASR (land rate for FSI 1) × 60%",
+      "reconciliation": "Ghatkopar SR feasibility used 50% (developer's share after MCGM=50% split, or a tentative-stage conservative rate). Live feasibility calculations may use 50% by convention; strict DCPR text says 60%. Algorithm should accept a configurable rate with 60% as default."
+    }
+  }
+}

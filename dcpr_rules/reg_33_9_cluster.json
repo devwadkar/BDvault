@@ -1,0 +1,125 @@
+{
+  "regulation_key": "33(9)",
+  "title": "Reconstruction / Redevelopment of Cluster(s) of Buildings under Urban Renewal Cluster Development Scheme (CDS)",
+  "part": "VI",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "source_pdf_lines": {"start": 11007, "end": 11779},
+
+  "scope": "Cluster redevelopment (URS/CDS) — mixes cessed buildings, MHADA acquired buildings, tenanted/authorized buildings 30 yr+, Govt/MCGM/MHADA lands & buildings, dilapidated buildings, and slum pockets (up to 50% of cluster area) into ONE scheme.",
+
+  "cluster_definition": {
+    "min_area_sqm_island_city": 4000,
+    "min_area_sqm_suburbs_extended_suburbs": 10000,
+    "min_dp_road_width_m": 18,
+    "min_dp_road_width_original_m": 12,
+    "boundary_defined_by": "Existing distinguishing physical boundaries (roads, nallas, railway lines) — else Municipal Commissioner decides",
+    "single_plot_treatment": "Land under CDS treated as ONE plot for FSI + marginal distances, regardless of underlying tenures. No separate amalgamation approval required."
+  },
+
+  "eligible_building_categories": [
+    "Cessed buildings in Island City (attracting MHAD Act 1976)",
+    "Buildings acquired by MHADA under MHAD Act 1976 (30 yr+)",
+    "Authorized buildings 30 yr+",
+    "Central Govt / State Govt / Semi-Govt / MCGM / MHADA institutional / office / tenanted buildings 30 yr+",
+    "Vacant / built-upon land of State Govt / Semi-Govt / MCGM / MHADA within cluster area (with dept consent)",
+    "Buildings unfit for human habitation certified by MHADA/MCGM/MBRRB",
+    "Slum areas declared under Slum Act Sec 4 OR pre-1/1/2000 slums (max 50% of cluster area)"
+  ],
+
+  "eligibility": {
+    "new_tenancy_cutoff_date": "1996-06-13",
+    "existence_evidence": "Certified MCGM 1995-96 inspection extract OR Court Order proving pre-13/6/96 existence",
+    "list_certification": {
+      "municipal_buildings": "MCGM",
+      "other_buildings_excl_slums": "MBRRB",
+      "slum_areas": "Competent Authority under Slum Act Ch I-E"
+    },
+    "mezzanine_pre_1996_regularized": "Eligible for rehab + incentive FSI"
+  },
+
+  "consent_requirement": {
+    "per_building_pct": 51,
+    "overall_scheme_pct": 70,
+    "exception": "No consent needed if MHADA/MCGM undertakes on own land directly (no developer)",
+    "developer_land_ownership_at_LOI_pct": 70,
+    "balance_ownership_deadline_from_LOI_years": 1
+  },
+
+  "rehab_area_entitlement": {
+    "basic_area_formula": "max(existing_carpet, 27.88 sqm) for residential/residential-cum-commercial",
+    "non_residential_basic": "Equal to existing area",
+    "additional_area_table_A_by_cluster_size": [
+      {"cluster_size_min_ha": 1,  "cluster_size_max_ha": 2,   "additional_pct_of_basic": 15},
+      {"cluster_size_min_ha": 2,  "cluster_size_max_ha": 5,   "additional_pct_of_basic": 20},
+      {"cluster_size_min_ha": 5,  "cluster_size_max_ha": 10,  "additional_pct_of_basic": 25},
+      {"cluster_size_min_ha": 10, "cluster_size_max_ha": null,"additional_pct_of_basic": 30}
+    ],
+    "additional_area_cap_condition": "If existing carpet ≥ 100 sqm, additional area computed on capped 100 sqm basis",
+    "additional_area_applicability_condition": "Only when scheme has max FSI of 4.00",
+    "slum_dweller_carpet_sqm": 25.0,
+    "slum_non_residential_max_sqm": 20.90
+  },
+
+  "total_fsi_permissible": {
+    "cap": 4.00,
+    "formula": "max(4.00, rehab_fsi + incentive_fsi)",
+    "computed_on": "gross plot area excluding reservations/road setback/existing muni roads BUT including BUA under reservation/road setback",
+    "excludes_fungible": true
+  },
+
+  "incentive_fsi_table_B_by_basic_ratio_and_cluster_size": {
+    "columns": ["0.4-1 ha", "1-5 ha", "5-10 ha", "10+ ha"],
+    "rows": [
+      {"basic_ratio_range": "Above 6.00",       "incentive_pct": [55, 60, 65, 70]},
+      {"basic_ratio_range": "4.00 – 6.00",      "incentive_pct": [65, 70, 75, 80]},
+      {"basic_ratio_range": "2.00 – 4.00",      "incentive_pct": [75, 80, 85, 90]},
+      {"basic_ratio_range": "0 – 2.00",         "incentive_pct": [85, 90, 95, 100]}
+    ],
+    "basic_ratio_formula": "LR / RC (both per ASR of year of LOI approval; weighted avg if multiple)",
+    "ratio_locked": "Fixed at LOI approval — does NOT change even if scheme is later revised"
+  },
+
+  "balance_fsi_sharing_table_C": {
+    "description": "If rehab + incentive < 4.00, balance shared as BUA between MHADA and Developer/Promoter",
+    "table": [
+      {"basic_ratio_min": 6.00, "basic_ratio_max": null, "developer_share_pct": 30, "mhada_share_pct": 70},
+      {"basic_ratio_min": 4.00, "basic_ratio_max": 6.00, "developer_share_pct": 35, "mhada_share_pct": 65},
+      {"basic_ratio_min": 2.00, "basic_ratio_max": 4.00, "developer_share_pct": 40, "mhada_share_pct": 60},
+      {"basic_ratio_min": 0,    "basic_ratio_max": 2.00, "developer_share_pct": 45, "mhada_share_pct": 55}
+    ]
+  },
+
+  "land_pooling_methods": [
+    "Purchase of lands + buildings",
+    "Land of Public Authority: via Empowered Committee (chaired by Chief Secretary) — GoM decides terms",
+    "Exchange for equivalent-value land per ASR",
+    "Procurement of DRs (registered)",
+    "Transfer to legal entity (Society/Company/Trust) proportional to stake",
+    "Acquisition (if promoter has ≥ 70% + dangerous buildings on balance) — via HPC recommendation to Govt"
+  ],
+
+  "impact_assessment_required": {
+    "trigger": "Before Municipal Commissioner identifies cluster for CDS",
+    "scope": "Impact on city + sector-level infrastructure + amenities + traffic + environment"
+  },
+
+  "augmentation_rules": {
+    "min_area_added_after_approval_pct_of_min_scheme": 75,
+    "no_augmentation_after": "CC issued for > 75% of total permissible BUA of original scheme",
+    "deletion_allowed_conditions": "Rehab construction not commenced AND contiguity not broken"
+  },
+
+  "cross_references": {
+    "reg_31_3_fungible": "Fungible ADDITIONAL to 4.00 cap",
+    "reg_32_tdr": "Balance FSI sharing / TDR",
+    "reg_33_10_borrowed_relaxations": "Reg 33(10) relaxations typically apply",
+    "reg_17_1": "Reservations development within cluster"
+  },
+
+  "extraction_gaps": {
+    "note": "Reg 33(9)(A) — Dharavi Notified Area (DNA) and Reg 33(9)(B) — BDD chawls at Naigaon are distinct sub-clauses with their own terms; extract separately when needed.",
+    "calculator_status": "PENDING — needs a reference 33(9) cluster feasibility to validate the Basic Ratio × size incentive table before authoring Reg33_9_Calculator.php"
+  }
+}

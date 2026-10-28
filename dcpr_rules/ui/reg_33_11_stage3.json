@@ -1,0 +1,54 @@
+{
+  "regulation_key": "33(11)",
+  "title": "SRA Permanent Transit Camp / Rental Housing",
+  "schema_version": 1,
+  "description": "UI schema for Stage 3 of the Area Analysis v2 wizard — DCPR 33(11) PTC/rental scheme. Fewer inputs than 33(10): zonal FSI, share split and FSI cap all come from the regulatory_constants table via RulesRegistry.",
+  "sections": [
+    {
+      "key": "plot_deductions",
+      "title": "Plot & deductions",
+      "blurb": "Enter the gross plot and every deduction. Net plot updates after save.",
+      "fields": [
+        { "key": "gross_plot_area_sqm", "path": "step_2.gross_plot_area_sqm", "type": "number", "label": "Gross plot area", "unit": "sqm", "required": true, "min": 0 },
+        { "key": "primary_road_width_m", "path": "step_2.primary_road_width_m", "type": "number", "label": "Primary road width", "unit": "m", "min": 0 },
+        {
+          "key": "roads", "path": "step_2.roads", "type": "repeat-group",
+          "label": "Road setbacks", "add_label": "Add road",
+          "help": "One row per road frontage.",
+          "columns": [
+            { "key": "width", "type": "number", "label": "Width", "unit": "m" },
+            { "key": "area",  "type": "number", "label": "Deduction area", "unit": "sqm" }
+          ]
+        },
+        {
+          "key": "named", "path": "step_2.named", "type": "repeat-group",
+          "label": "Named deductions (nalla, CRZ, etc.)", "add_label": "Add deduction",
+          "help": "Any other named deduction. Set 'include' = 1 to deduct from net plot; 0 for informational only.",
+          "columns": [
+            { "key": "label",   "type": "text",   "label": "Label" },
+            { "key": "area",    "type": "number", "label": "Area", "unit": "sqm" },
+            { "key": "include", "type": "number", "label": "Include? (1 or 0)" }
+          ]
+        },
+        { "key": "reservation_area_sqm", "path": "step_2.reservation_area_sqm", "type": "number", "label": "Reservation area", "unit": "sqm", "min": 0 },
+        { "key": "reservation_included_in_total", "path": "step_2.reservation_included_in_total", "type": "radio-yesno", "label": "Deduct reservation from net plot?", "yes_label": "Yes · Deduct", "no_label": "No · Retains FSI" }
+      ]
+    },
+    {
+      "key": "amenity_handover",
+      "title": "Amenity handover (Reg 14(A))",
+      "blurb": "Area handed over as amenity plot. Reduces net plot but may not reduce FSI.",
+      "fields": [
+        { "key": "amenity_area_sqm", "path": "step_2.amenity_area_sqm", "type": "number", "label": "Amenity handover area", "unit": "sqm", "min": 0, "help": "Blank or 0 if not applicable." }
+      ]
+    },
+    {
+      "key": "scheme_params",
+      "title": "Scheme parameters",
+      "blurb": "33(11) uses zonal FSI + share split from the DCPR constants table. Only the loading factor is user-adjustable.",
+      "fields": [
+        { "key": "s3_loading_factor", "path": "step_3.s3_loading_factor", "type": "number", "label": "Loading factor", "default": 1.15, "tip": "Ratio to convert tenement carpet → BUA. Default 1.15 for PTC/rental housing." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "regulation_key": "33(10)",
+  "title": "Slum Rehabilitation (SRA)",
+  "schema_version": 1,
+  "description": "UI schema for Stage 3 of the Area Analysis v2 wizard — DCPR 33(10) pilot. Field keys map 1:1 to AreaCalcEngine input keys (see lib/AreaCalcEngine.php::mapInputs) so no translation layer is needed on save.",
+  "sections": [
+    {
+      "key": "plot_deductions",
+      "title": "Plot & deductions",
+      "blurb": "Enter the gross plot and every deduction. Net plot updates as you type.",
+      "fields": [
+        {
+          "key": "gross_plot_area_sqm",
+          "path": "step_2.gross_plot_area_sqm",
+          "type": "number",
+          "label": "Gross plot area",
+          "unit": "sqm",
+          "required": true,
+          "min": 0,
+          "tip": "Total plot area before any deductions. Taken from the property card / survey record."
+        },
+        {
+          "key": "primary_road_width_m",
+          "path": "step_2.primary_road_width_m",
+          "type": "number",
+          "label": "Primary road width",
+          "unit": "m",
+          "min": 0,
+          "tip": "Width of the main road adjoining the plot. Determines some FSI eligibilities."
+        },
+        {
+          "key": "roads",
+          "path": "step_2.roads",
+          "type": "repeat-group",
+          "label": "Road setbacks",
+          "add_label": "Add road",
+          "help": "One row per road frontage. Each row = road width + the deduction area it takes off the plot.",
+          "columns": [
+            { "key": "width", "type": "number", "label": "Width",          "unit": "m"   },
+            { "key": "area",  "type": "number", "label": "Deduction area", "unit": "sqm" }
+          ]
+        },
+        {
+          "key": "named",
+          "path": "step_2.named",
+          "type": "repeat-group",
+          "label": "Named deductions (nalla, CRZ, etc.)",
+          "add_label": "Add deduction",
+          "help": "Any other named deduction such as nalla setback or CRZ. Un-check 'include' if the deduction is informational only.",
+          "columns": [
+            { "key": "label",   "type": "text",   "label": "Label"                },
+            { "key": "area",    "type": "number", "label": "Area",   "unit": "sqm" },
+            { "key": "include", "type": "number", "label": "Include? (1 or 0)"   }
+          ]
+        },
+        {
+          "key": "reservation_area_sqm",
+          "path": "step_2.reservation_area_sqm",
+          "type": "number",
+          "label": "Reservation area",
+          "unit": "sqm",
+          "min": 0,
+          "help": "Green Belt / ROS / public amenity reservation. Usually retains FSI (leave the checkbox off)."
+        },
+        {
+          "key": "reservation_included_in_total",
+          "path": "step_2.reservation_included_in_total",
+          "type": "radio-yesno",
+          "label": "Deduct reservation from net plot?",
+          "yes_label": "Yes · Deduct",
+          "no_label": "No · Retains FSI"
+        }
+      ]
+    },
+
+    {
+      "key": "amenity_handover",
+      "title": "Amenity handover (Reg 14(A))",
+      "blurb": "Area handed over as an amenity plot per Reg 14(A). Reduces net plot but may not reduce FSI.",
+      "fields": [
+        {
+          "key": "amenity_area_sqm",
+          "path": "step_2.amenity_area_sqm",
+          "type": "number",
+          "label": "Amenity handover area",
+          "unit": "sqm",
+          "min": 0,
+          "help": "Blank = no amenity handover. Leave 0 if not applicable."
+        }
+      ]
+    },
+
+    {
+      "key": "rehab_drivers",
+      "title": "Rehab drivers",
+      "blurb": "Eligible-tenement count + carpet area + loading factor drive the Rehab BUA for 33(10).",
+      "fields": [
+        {
+          "key": "s3_eligible_total",
+          "path": "step_3.s3_eligible_total",
+          "type": "number",
+          "label": "Eligible tenements",
+          "required": true,
+          "min": 0,
+          "help": "Count of slum tenements eligible for rehab (post-eligibility cut-off list)."
+        },
+        {
+          "key": "s3_carpet_res_sqm",
+          "path": "step_3.s3_carpet_res_sqm",
+          "type": "number",
+          "label": "Carpet · residential",
+          "unit": "sqm",
+          "default": 27.88,
+          "tip": "Minimum SRA residential carpet floor is 27.88 sqm. Edit only if the sanction allows a different carpet."
+        },
+        {
+          "key": "s3_carpet_com_sqm",
+          "path": "step_3.s3_carpet_com_sqm",
+          "type": "number",
+          "label": "Carpet · commercial",
+          "unit": "sqm",
+          "default": 20.9
+        },
+        {
+          "key": "s3_loading_factor",
+          "path": "step_3.s3_loading_factor",
+          "type": "number",
+          "label": "Loading factor",
+          "default": 1.15,
+          "tip": "Ratio to convert tenement carpet area → BUA. Typically 1.15 for SRA."
+        },
+        {
+          "key": "s3_amenity_built_sqm",
+          "path": "step_3.s3_amenity_built_sqm",
+          "type": "number",
+          "label": "Amenity built BUA",
+          "unit": "sqm",
+          "min": 0,
+          "help": "Common amenity area built as part of the scheme (society office / welfare / community hall)."
+        }
+      ]
+    },
+
+    {
+      "key": "insitu",
+      "title": "In-situ sale (optional)",
+      "blurb": "Row 15 of the Feasibility Statement. Leave blank to use the auto-computed maximum = min(Sale Component, Gross × in-situ FSI cap − Rehab).",
+      "fields": [
+        {
+          "key": "sale_bua_proposed_in_situ_sqm",
+          "path": "step_3.sale_bua_proposed_in_situ_sqm",
+          "type": "number",
+          "label": "Proposed Sale BUA In-Situ",
+          "unit": "sqm",
+          "min": 0,
+          "help": "How much of the Sale Component you actually plan to build on-site. If left blank, the Feasibility view shows the maximum allowable value flagged as auto-max · unconfirmed.",
+          "tip": "The engine clips this to the in-situ FSI cap. The remainder of the Sale Component becomes Balance Sale BUA / TDR (Row 18)."
+        }
+      ]
+    }
+  ]
+}

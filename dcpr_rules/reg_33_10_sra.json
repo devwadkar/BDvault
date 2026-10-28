@@ -1,0 +1,218 @@
+{
+  "regulation_key": "33(10)",
+  "title": "Redevelopment for Rehabilitation of Slum Dwellers (SRA Scheme)",
+  "part": "VI",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "source_pdf_lines": {"start": 12431, "end": 15400},
+
+  "eligibility": {
+    "protected_occupier": "Protected occupier as defined in Chapter I-B of Maharashtra Slums Areas (Improvement, Clearance and Redevelopment) Act, 1971",
+    "slum_definition": [
+      "Censused slums: on Govt/MCGM/undertaking land, in records as censused in 1976, 1980, 1985, before 1 Jan 1995, or before 1 Jan 2000",
+      "Areas declared/notified under Slum Act Section 4",
+      "Areas declared as slum rehab area by SRA (deemed slum rehab area on CEO SRA approval)",
+      "Pavement stretches deemed viable for SRS",
+      "Areas approved for transit camps by SRA"
+    ],
+    "occupant_only": "Only actual occupant is eligible — 'structure-owner' (not occupant) has no right even if named in electoral roll",
+    "not_eligible": [
+      "Any person who owns a dwelling unit on ownership basis in MCGM area",
+      "Persons eligible under more than one SRS (only one allowed)",
+      "Persons with electoral roll enrolment in both non-slum and slum area"
+    ],
+    "joint_ownership_mandatory": "Reconstructed tenement conjointly owned by hutment dweller + spouse"
+  },
+
+  "consent_requirement": {
+    "dcpr_2034_original_pct": 70,
+    "note_current_practice": "Amended by State Government to 51% of eligible hutment dwellers (via subsequent notification). Algorithm should use configurable threshold with 51% as current default and 70% as DCPR-text fallback.",
+    "irrecoverable_agreements": "Written agreements of eligible hutment-dwellers required before LOI",
+    "exceptions": "Not applicable to Slum Rehab Projects by State Govt / Public Authority / Govt Company u/s 617 Companies Act 1956"
+  },
+
+  "rehab_tenement_specification": {
+    "carpet_area_sqm": 25,
+    "includes": ["Balcony", "Fungible compensatory area", "Bathroom", "Water closet"],
+    "excludes": ["Common areas", "Wall thickness (partition walls) area"],
+    "note": "Even if existing hut is larger, entitled to only 25 sqm carpet. Priority allotment to differently-abled or female-headed households, then lots drawn.",
+    "transfer_restriction": {
+      "lockin_years": 10,
+      "exception": "Transfer to legal heir allowed",
+      "breach_consequence": "Tenement taken over by SRA"
+    }
+  },
+
+  "rehab_to_sale_ratio_base": {
+    "description": "Base free-sale BUA permitted per 10 sqm of rehab BUA (per Reg 33(10) VIII 3.3–3.5)",
+    "island_city": {"rehab_sqm": 10, "free_sale_sqm": 7.5, "ratio": 0.75},
+    "suburbs_and_extended_suburbs": {"rehab_sqm": 10, "free_sale_sqm": 10.0, "ratio": 1.00},
+    "difficult_areas": {"rehab_sqm": 10, "free_sale_sqm": 13.33, "ratio": 1.30, "industry_rounded_ratio": 1.30, "dcpr_exact_ratio": 1.333, "note": "Reg 33(10) VIII 3.5 — 'in difficult areas as may be notified by SRA'. Industry practice rounds 1.333 to 1.30 in feasibility. Difficult-area ratio does NOT stack with large-scheme incentive (it replaces the base ratio + incentive)."}
+  },
+
+  "deduction_treatment_matrix": {
+    "description": "Two-stage deduction — factor for net-plot reduction (used for tenement density), then add-back for FSI computation. Verified against Malad-E Satellite SRA feasibility.",
+    "items": [
+      {"category": "dp_road",           "typical_deduction_factor_pct": 100, "add_back_for_fsi": true,  "note": "Full physical loss for density; full add-back for FSI (developer compensated)"},
+      {"category": "nalla_setback",     "typical_deduction_factor_pct": 100, "add_back_for_fsi": false, "note": "Full physical loss; NO add-back (nalla is truly unusable)"},
+      {"category": "ros_playground",    "typical_deduction_factor_pct": 35,  "add_back_for_fsi": true,  "note": "Only 35% treated as physical loss; add-back for FSI"},
+      {"category": "ros_garden",        "typical_deduction_factor_pct": 35,  "add_back_for_fsi": true,  "note": "Same 35% factor"},
+      {"category": "buildable_reservation_school", "typical_deduction_factor_pct": null, "add_back_for_fsi": true, "note": "Deducted footprint (nominal, e.g. school building base) + full add-back for FSI + generates sale incentive on handover — see buildable_reservation_sale_incentive below"},
+      {"category": "amenity_plot_14A",  "typical_deduction_factor_pct": 100, "add_back_for_fsi": false, "note": "Reg 14(A) amenity plot fully surrendered"}
+    ]
+  },
+
+  "buildable_reservation_sale_incentive": {
+    "regulation_ref": "Reg 33(10) + Reg 33(7) 7(f) analog",
+    "description": "When a buildable reservation (Municipal school RE 1.1, higher education RE 2.1, market, etc.) is handed over, the developer gets additional sale BUA in lieu of the value of construction handed over. Formula is scheme-specific.",
+    "formula_default": "buildable_reservation_area_sqm × 0.452",
+    "industry_note": "Malad-E Satellite SRA fact: 4230 sqm municipal school × 0.452 = 1912.15 sqm additional sale BUA. Exact factor may vary per scheme; treat as configurable per project (user override).",
+    "not_counted_in_sale_ratio_base": "The sale incentive is added AFTER the rehab-component × sale-ratio calculation — it is not multiplied by the ratio again."
+  },
+
+  "plot_area_for_fsi_computation": {
+    "formula": "net_plot_area + sum(reservation areas where add_back_for_fsi = true)",
+    "verified": {
+      "malad_e_satellite": {"gross": 140761, "net_after_deductions": 111332.80, "add_backs": 27666.20, "plot_for_fsi": 138999.00}
+    },
+    "note": "Plot Area for FSI ≠ Net Plot Area. Net = gross − all_deductions_after_factor. Plot for FSI = Net + reservations we get FSI credit for (DP road, ROS, buildable reservations). Nalla and Amenity (Reg 14A) stay excluded."
+  },
+
+  "loading_factor_range": {
+    "ghatkopar_verified": 1.283,
+    "malad_e_satellite_verified": 1.32,
+    "typical_range": "1.25 – 1.35",
+    "note": "Carpet-to-BUA loading covers walls, staircases, lift wells, lift lobbies, common passages. Higher-density towers use 1.30–1.35."
+  },
+
+  "large_scheme_free_sale_incentive": {
+    "description": "Additional BUA under free-sale component based on scheme area (adds to base ratio above). Ghatkopar 33(10) feasibility of ~6.42 ha uses this incentive to reach 1.15 ratio (base 1.00 for Suburbs + 15% bracket incentive).",
+    "tiers": [
+      {"area_min_ha": 0,   "area_max_ha": 2,    "additional_free_sale_pct": 5,  "acres_equivalent": "up to ~5 acres"},
+      {"area_min_ha": 2,   "area_max_ha": 4,    "additional_free_sale_pct": 10, "acres_equivalent": "5–10 acres"},
+      {"area_min_ha": 4,   "area_max_ha": 8,    "additional_free_sale_pct": 15, "acres_equivalent": "10–20 acres"},
+      {"area_min_ha": 8,   "area_max_ha": 16,   "additional_free_sale_pct": 20, "acres_equivalent": "20–40 acres"},
+      {"area_min_ha": 16,  "area_max_ha": null, "additional_free_sale_pct": 20, "acres_equivalent": "above 40 acres"}
+    ],
+    "source_note": "DCPR text has editorial overlay of two versions with acres/ha correspondence. Ha-based tiers above cross-checked against Ghatkopar feasibility (~6.42 ha → 15% → ratio 1.15).",
+    "computed_rehab_to_sale_ratio_formula": "effective_ratio = base_ratio × (1 + incentive_pct/100)"
+  },
+
+  "max_fsi_in_situ": {
+    "fsi_cap": 4.0,
+    "unconsumable_balance": "If sanctioned FSI (rehab + incentive) cannot be built in-situ due to height cap or planning constraints, balance is granted as TDR per Reg 32",
+    "excludes_fungible": "The max-FSI cap is EXCLUSIVE of the Fungible FSI compensatory area (Reg 31(3)) — fungible is over-and-above this cap"
+  },
+
+  "tenement_density": {
+    "minimum_per_net_ha": 650,
+    "ceo_sra_relaxation_pct": 25,
+    "min_after_relaxation": 487.5,
+    "in_situ_over_fsi_4_condition": "If existing tenement density > 650/ha, CEO SRA may allow in-situ FSI consumption > 4"
+  },
+
+  "approvals_timeline": {
+    "sra_approval_days": 60,
+    "deemed_approval_if_no_response": true,
+    "landowner_noc_days": 60,
+    "deemed_noc_if_no_response": true,
+    "rehab_first_then_free_sale": true,
+    "simultaneous_approval_pct": 10,
+    "ngo_free_sale_advance_pct": 20,
+    "ngo_free_sale_release_after_rehab_pct": 30
+  },
+
+  "premium_land_premium_state_mcgm_mhada": {
+    "regulation_ref": "33(10) sub-clause 1.11 + Circular 114 dt 19/10/2012",
+    "formula": "premium = plot_area_sqm × 3.00 × asr_rate × 0.25",
+    "rate_pct_of_asr": 25,
+    "applies_to": "SRS on lands owned by Government, Semi-Government undertakings, Local Bodies (MHADA, MCGM, MMRDA)",
+    "notional_fsi_multiplier": 3.00,
+    "deposited_in": "Nivara Nidhi (Govt land) OR paid to land-owning authority (MHADA/MCGM/MMRDA)",
+    "verification_ghatkopar": {
+      "plot_area_sqm": 64219.67,
+      "asr_land_rate_sqm": 69210,
+      "computed_premium_cr": "64219.67 × 3.00 × 69210 × 0.25 / 10000000 = 111.13 Cr",
+      "feasibility_shows_cr": 111.12,
+      "match": "PASS (0.01% variance from rounding)"
+    }
+  },
+
+  "lease_terms": {
+    "rehab_component": {
+      "term_years": 30,
+      "renewable_by_years": 30,
+      "lease_rent_per_sqm_of_land": "₹1001 per 4000 sqm (per updated version; text has editorial overlay ₹1001 vs ₹4000)",
+      "lessee": "Co-operative Housing Society of slum dwellers"
+    },
+    "free_sale_component": {
+      "term_years": 30,
+      "renewable_by_years": 30,
+      "lease_rent": "As fixed by SRA",
+      "lessee": "Society/Association of free-sale purchasers"
+    }
+  },
+
+  "rehab_component_bua_inclusions": [
+    "Residential tenements",
+    "Aaganwadi, health centre/outpost",
+    "Community hall / gymnasium / fitness centre",
+    "Skill development centre, women entrepreneurship centre",
+    "Yuvakendra / library",
+    "Balwadi",
+    "Society office",
+    "Religious structures (per GR 05/05/2011 and 18/11/2015)",
+    "Schools / dispensary / gymnasium run by public authority or charitable trust",
+    "5% incentive commercial area for the Co-op Society",
+    "Additional 5% incentive commercial area for NGO / Govt / Public Authority / Govt Company (where eligible)"
+  ],
+
+  "rehab_component_bua_exclusions": "Areas set down in Reg 31(1) exemptions (staircase, lift, RG etc.) AND built-up area given for buildable DP reservations",
+
+  "fungible_compensatory_area": {
+    "reference": "Reg 31(3)",
+    "premium_on_rehab_component": "NONE (fungible on rehab is free per Reg 31(3) explicit inclusion of 33(10))",
+    "premium_on_free_sale_component": "60% of ASR (residential) per Reg 31(3)",
+    "industry_practice_note": "Feasibility documents commonly use 50% of ASR (developer's share after MCGM 50% split of the 60% total). Configurable — default 60%."
+  },
+
+  "tdr_utilization": {
+    "in_lieu_of_free_sale": "Developer may opt to claim TDR instead of building free-sale in-situ (constraint cases: height cap, uneconomic site)",
+    "phased_release": {
+      "before_frame_or_10pct_rehab": "0%",
+      "on_frame_of_one_rehab_building_OR_10pct_rehab_construction": "up to 50% of rehab construction value",
+      "on_full_rehab_completion": "Full balance TDR"
+    },
+    "tdr_formula": "Per Reg 32 utilization formula: X = (Rg / Rr) × Y"
+  },
+
+  "special_case_vital_public_purpose": {
+    "clause_3_11": "For slums on land needed for vital public purpose and dwellers relocated on unencumbered plot, TDR per Reg 32(1) Table 12(A) Sr No 8 (equal to spared land area) plus construction TDR is granted",
+    "state_govt_agency_route": "State Govt / Public Authority / Govt Company u/s 617 may undertake SRS on own land",
+    "identification_deadline_days": 270,
+    "note": "TDR of land component NOT given until eligible slum dwellers identified"
+  },
+
+  "restrictions": {
+    "no_receiving_of_regular_tdr": "SRA plots cannot receive DRCs from other schemes (Reg 32 restriction 8(b)) except when non-slum plot amalgamated with SRA plot via CEO SRA / MCGM Commissioner NOC",
+    "vacant_land_tenure_termination": "Any Vacant Land Tenure or lease created by MCGM stands automatically terminated on LOI issue",
+    "assessment_dues_delinked": "Pending assessment/compensation/NA-tax dues do not block SRA project approval"
+  },
+
+  "cross_references": {
+    "reg_31_fungible": "Fungible on rehab component: free (no premium)",
+    "reg_32_tdr": "Excess sanctioned FSI beyond 4 in-situ → TDR",
+    "reg_33_11": "Rental housing / permanent transit camps",
+    "reg_33_20": "Affordable housing on unreserved private land",
+    "circulars": {
+      "sra_circular_31": "Open Space Deficiency premium formula",
+      "sra_circular_7_dt_25_11_1997": "Maintenance Deposit per rehab tenement (~₹40,000)",
+      "circular_114_dt_19_10_2012": "25% Land Premium formula for Govt/MCGM/MHADA land"
+    }
+  },
+
+  "extraction_gaps": {
+    "note": "This YAML covers eligibility, ratios, FSI cap, density, key premiums, and TDR mechanics. NOT yet extracted: rehab tenement common-area norms (sub-clause 6.x), amenity requirements (8.x), area calculations for religious/social/commercial incentives, exact free-sale ownership carpet ratios, RERA carpet vs BUA conversion. To be added in Phase 2."
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "regulation_key": "33(20)(B)",
+  "title": "Affordable Housing on Private Land (Combined Reg 30(A) + 33(20)(B))",
+  "part": "VI",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "note": "Verified against Sea Pebbles CHS Bandra (1218 sqm), Malad Dindoshi CTS 82B (20,234 sqm), JAI GIRNAR Tardeo (3346 sqm cross-scheme). Composite scheme: 30(A) base stack + 33(7)(B) incentive + 33(20)(B) additional (50/50 owner/AH split). Total permissible FSI capped at 4.00 + 35% fungible = 5.40.",
+
+  "scope": "Private plot developer voluntarily allocates 50% of DCPR-additional FSI to construct Affordable Housing (AH) tenements handed over free-of-cost to MCGM. In return, gets equal 50% additional FSI for own sale component, over-and-above regular Reg 30(A) permissible.",
+
+  "base_stack_reg_30A": {
+    "description": "Standard Reg 30(A) FSI stack applied to net plot area after all deductions",
+    "components": {
+      "zonal_fsi": {"suburbs": 1.0, "island_city": 1.33, "regulation_ref": "Reg 30 Table 12"},
+      "additional_govt_fsi_on_premium": {"max": 0.5, "regulation_ref": "Reg 30(A)(1)(A) — chargeable at 60% of ASR land rate"},
+      "additional_tdr": {
+        "max": 0.9,
+        "regulation_ref": "Reg 32",
+        "slum_tdr_share": {"min_pct_of_tdr": 20, "max_pct_of_tdr": 50, "regulation_ref": "Reg 30(A)(6) proviso"},
+        "general_tdr_share": {"min_pct_of_tdr": 50, "max_pct_of_tdr": 80}
+      }
+    }
+  },
+
+  "incentive_33_7_B": {
+    "description": "Additional BUA for 30+ year old buildings (Reg 33(7)(B)) — reduces the General TDR the developer must purchase.",
+    "formula": "MAX(existing_authorised_bua × 15%, num_tenants × 10 sqm)",
+    "treatment": "Deducted from General TDR purchase requirement (developer gets it 'free' — no TDR purchase cost)",
+    "regulation_ref": "Reg 33(7)(B)"
+  },
+
+  "road_setback_advantage": {
+    "description": "Setback area merged with DP road — counted ONCE as BUA (not multiple times across FSI sources).",
+    "formula": "setback_area_sqm (BUA credit equal to setback area)",
+    "regulation_ref": "Reg 33(20)(B) proviso"
+  },
+
+  "additional_33_20B_split": {
+    "description": "After base 30(A) stack, developer opts into 33(20)(B) which unlocks the remaining FSI up to 4.00 cap, split 50/50 owner/AH.",
+    "formula": {
+      "additional_available_fsi": "4.00 − base_30A_fsi_consumed",
+      "owner_share_fsi": "0.5 × additional_available_fsi",
+      "ah_share_fsi": "0.5 × additional_available_fsi",
+      "ah_handover": "AH tenements built by developer, handed over free-of-cost to MCGM"
+    },
+    "regulation_ref": "Reg 33(20)(B)"
+  },
+
+  "fungible_35pct": {
+    "description": "Reg 31(3) — 35% fungible over-and-above the permissible FSI. Applied to BOTH owner (sale) and AH components.",
+    "regulation_ref": "Reg 31(3)"
+  },
+
+  "total_permissible_fsi": {
+    "base_cap": 4.0,
+    "with_fungible": 5.40,
+    "regulation_ref": "33(20)(B) A + Reg 31(3)"
+  },
+
+  "verified_reference_malad_dindoshi": {
+    "plot_area_sqm": 20234.00,
+    "net_area_after_aos": 19722.50,
+    "zonal_bua_1_0": 19722.50,
+    "gov_fsi_bua_0_5": 9861.25,
+    "tdr_bua_0_9": 17750.25,
+    "slum_tdr_at_20pct_of_tdr": 3550.05,
+    "incentive_33_7B_max_formula": 3000.00,
+    "additional_33_20b_fsi": 1.6,
+    "owner_share_bua": 15778.00,
+    "ah_share_bua": 15778.00
+  },
+
+  "cross_references": {
+    "reg_30A": "Base FSI stack (Zonal + Gov + TDR)",
+    "reg_31_3": "Fungible 35% on top",
+    "reg_32": "TDR utilization formula",
+    "reg_33_7_B": "Incentive FSI for 30+ year buildings"
+  }
+}

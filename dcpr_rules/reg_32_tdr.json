@@ -1,0 +1,162 @@
+{
+  "regulation_key": "32",
+  "title": "Transfer of Development Rights (TDR)",
+  "part": "V",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "source_pdf_lines": {"start": 7682, "end": 8760},
+
+  "applicability": "TDR provisions apply only to prospective development. Development Rights Certificates (DRCs) are transferable negotiable instruments issued by the MCGM Commissioner.",
+
+  "generation_instances_table_12A": [
+    {
+      "sr_no": 1,
+      "instance": "Full DP-reserved plot for public purpose surrendered free of cost to MCGM",
+      "tdr_extent_formula": "BUA = Zonal (basic) FSI of surrendered land + BUA equal to plot area of surrendered land",
+      "conditions": [
+        "Land not yet handed over and FSI benefit not availed on remainder plot, no TDR/monetary compensation availed",
+        "No award declared under Section 23 of Right to Fair Compensation Act 2013"
+      ]
+    },
+    {
+      "sr_no": "1b",
+      "instance": "Inclusive Housing (Reg 15) / Amenity Open Space (Reg 14) / Cotton Textile Mills (Reg 35) surrender",
+      "tdr_extent_formula": "BUA = Zonal (basic) FSI of surrendered land",
+      "conditions": ["Only if FSI benefit is not availed on remainder plot and no TDR previously availed"]
+    },
+    {
+      "sr_no": "1c",
+      "instance": "DP Roads / RL under MMC Act / River widening / major Nalla widening surrendered to MCGM",
+      "tdr_extent_formula": "BUA = Zonal (basic) FSI of surrendered land + BUA equal to plot area of surrendered land",
+      "conditions": ["Only if FSI benefit is not availed on development proposal and not proposed on remainder plot"]
+    },
+    {
+      "sr_no": "1d",
+      "instance": "Subsequent road widening / proposed DP road / right-of-way to land-locked plot (Reg 22)",
+      "tdr_extent_formula": "BUA = Zonal (basic) FSI of surrendered land (or adjoining SDZ-II zone)",
+      "conditions": ["Applies where development is complete or not proposed"]
+    },
+    {
+      "sr_no": 2,
+      "instance": "Reservation developed under AR provisions with unconsumed zonal FSI due to planning constraints",
+      "tdr_extent_formula": "BUA = plot area of surrendered land + BUA in lieu of construction of built-up amenity"
+    },
+    {
+      "sr_no": 3,
+      "instance": "BUA in lieu of cost of construction of built-up amenity to be handed over (Reg 14/15/17)",
+      "tdr_extent_formula": "As per Construction Amenity TDR formula below"
+    },
+    {
+      "sr_no": 4,
+      "instance": "Cessed bldg 33(7)/33(7)(B), Urban Renewal 33(8), Cluster 33(9), Slum Rehab 33(10), Rental Housing 33(11)",
+      "tdr_extent_formula": "As prescribed under the specific scheme's DCPR provisions"
+    },
+    {
+      "sr_no": 5,
+      "instance": "Affordable/Rental Housing on unreserved private land, entire plot + tenements handed over free (Reg 33(20))",
+      "tdr_extent_formula": "As prescribed under Reg 33(20)"
+    },
+    {
+      "sr_no": 6,
+      "instance": "Heritage buildings (Reg 52) where redevelopment not permitted",
+      "tdr_extent_formula": "TDR = (Zonal FSI BUA + plot area on which heritage structure exists) − existing BUA of heritage building",
+      "conditions": ["With MHCC recommendation and Commissioner permission", "Plot potential permanently reduced by existing BUA"]
+    },
+    {
+      "sr_no": 7,
+      "instance": "Encumbered plots urgently required for public projects",
+      "tdr_extent_formula": "50% of BUA per Zonal FSI for encumbered portion (project authority certifies vacant vs encumbered demarcation)"
+    },
+    {
+      "sr_no": 8,
+      "instance": "Unreserved accessible plot (not in NDZ/SDZ) offered voluntarily for public purpose (POS/SWM/Chowky/PSC)",
+      "tdr_extent_formula": "BUA = Zonal FSI + plot area equivalent"
+    },
+    {
+      "sr_no": 9,
+      "instance": "Reserved DP-road/public-purpose land in N-SDZ-II, accessible from existing road",
+      "tdr_extent_formula": "0.8 × land area + BUA per Zonal FSI of adjoining zone + plot area equivalent"
+    },
+    {
+      "sr_no": 10,
+      "instance": "Roads / uninterrupted access to SH/POS/OA handed over under Reg 33(8)",
+      "tdr_extent_formula": "BUA equal to area of land surrendered"
+    }
+  ],
+
+  "tdr_multipliers_for_dp_road_reservation_surrender": {
+    "island_city": {
+      "with_compound_wall_fencing": 2.5,
+      "without_compound_wall_permitted": 2.35
+    },
+    "suburban_extended_suburban": {
+      "with_compound_wall_fencing": 2.0,
+      "without_compound_wall_permitted": 1.85
+    },
+    "note": "Multiplier applied to surrendered land area to compute TDR quantum. Reduced ratio (2.35 / 1.85) applies where fencing/compound wall construction is not permissible."
+  },
+
+  "incentive_tdr_early_submission": {
+    "description": "Additional/incentive TDR as percentage of surrendered land area for early submission",
+    "tiers": [
+      {"within_years_of_notification": 1, "bonus_pct": 20},
+      {"within_years_of_notification": 2, "bonus_pct": 15},
+      {"within_years_of_notification": 3, "bonus_pct": 10},
+      {"within_years_of_notification": 5, "bonus_pct": 5}
+    ],
+    "notification_reference": "DCPR 2034 sanction date: 2018-05-08"
+  },
+
+  "utilization_formula": {
+    "formula": "X = (Rg / Rr) × Y",
+    "variables": {
+      "X": "Permissible TDR utilization on receiving plot (sqm)",
+      "Rg": "ASR land rate (Rs/sqm) of generating plot in the generating year",
+      "Rr": "ASR land rate (Rs/sqm) of receiving plot in the generating year",
+      "Y": "TDR debited from DRC (sqm)"
+    },
+    "note": "All TDR including slum TDR and heritage TDR shall be utilized as per this formula only. If multiple ASR rates apply on receiving plot, use weighted average."
+  },
+
+  "construction_amenity_tdr": {
+    "formula": "Amenity_TDR_sqm = (A / B) × 1.25",
+    "variables": {
+      "A": "Cost of construction of amenity in Rs, per ASR construction rates for the year construction commences",
+      "B": "Land rate per sqm per ASR for the year construction commences"
+    }
+  },
+
+  "restrictions_receiving_plot": {
+    "not_permitted_in": [
+      "Coastal areas, NDZ, SDZ, TDAs, Green Zone, SPA areas (MMRDA/MIDC/MHADA)",
+      "Slum plots / cessed plots under Reg 33(7)/(9)/(10) — except amalgamated non-slum plots with SRA/MHADA NOC",
+      "Proposals utilizing special-FSI provisions unless otherwise specified",
+      "Areas where permissible FSI < 1.0",
+      "Industrial Zone with only hazardous activity",
+      "Heritage buildings/precincts (Reg 52), except with MHCC approval"
+    ],
+    "mandatory_slum_tdr_share": {
+      "min_pct_of_admissible_tdr": 20,
+      "max_pct_of_admissible_tdr": 50,
+      "source": "Reg 30(A)(6) proviso"
+    }
+  },
+
+  "issuance_procedure": {
+    "granted_by": "Municipal Commissioner",
+    "issued_after": [
+      "Land surrendered free of cost and encumbrances to MCGM/State Govt",
+      "Land levelled to surrounding ground level",
+      "1.5 m compound wall (or as stipulated by Commissioner) with gate constructed at owner's cost",
+      "Ownership transferred in Revenue Records"
+    ],
+    "transfer": "DRC transfer requires Commissioner's endorsement with registered agreement between original and new holder",
+    "lessor_compensation": "For leased land: lessee must pay lessor (or deposit with Planning Authority) the value of lessor's interest per Land Acquisition Act 1894 / RFCTLARR 2013"
+  },
+
+  "cross_references": {
+    "reg_30_mandatory_slum_tdr": "Reg 30(A)(6) — min 20% / max 50% of admissible TDR from slum redevelopment must be utilized",
+    "reg_31_fungible_over_and_above": "Fungible FSI is over-and-above TDR + additional-FSI-premium, subject to permissible FSI cap"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "regulation_key": "33(5)",
+  "title": "MHADA Housing Scheme Redevelopment — Input Schema",
+  "version": 1,
+  "note": "Fields for Reg 33(5) MHADA scheme. Verified structurally against Worli Shivneri+Shree Ganesh (4381 sqm, 192 tenants). Incentive FSI and Society/MHADA sharing driven by Basic Ratio (LR/RC).",
+
+  "groups": [
+    {
+      "key": "basic",
+      "title": "Basic Project Information",
+      "fields": [
+        {"key": "cts_number",     "label": "CTS / MHADA Layout No.", "type": "string",   "required": true,  "source": "user"},
+        {"key": "village",        "label": "Village",                "type": "string",   "required": true,  "source": "proposal"},
+        {"key": "ward",           "label": "Ward",                   "type": "string",   "required": true,  "source": "user"},
+        {"key": "location",       "label": "Location",               "type": "string",   "required": true,  "source": "proposal"},
+        {"key": "site_address",   "label": "Site Address",           "type": "textarea", "required": false, "source": "proposal"},
+        {"key": "pincode",        "label": "Pincode",                "type": "string",   "required": false, "source": "proposal"},
+        {"key": "scheme_type",    "label": "Scheme Type",            "type": "select",   "required": true,  "source": "user",
+         "options": ["New MHADA scheme (vacant land)", "Redevelopment of existing MHADA scheme", "MHADA-lessee CHS redevelopment"],
+         "help": "New schemes: 4.0 FSI, ≥70% EWS/LIG/MIG. Redevelopment: 3.0 default, 4.0 if plot ≥4000 sqm AND road ≥18m."},
+        {"key": "development_zone","label": "Development Zone",      "type": "select",   "required": true,  "source": "user", "options": ["Island City", "Suburbs & Extended Suburbs"]}
+      ]
+    },
+    {
+      "key": "land",
+      "title": "Plot & Site",
+      "fields": [
+        {"key": "gross_plot_area_sqm","label": "Gross Plot Area (per MHADA layout)","type": "number", "unit": "sqm", "required": true, "source": "user"},
+        {"key": "setback_area_sqm",   "label": "Setback / DP Road Deduction",        "type": "number", "unit": "sqm", "required": false, "source": "user", "default": 0},
+        {"key": "reservation_deduction_sqm","label": "Reservation of Public Amenities Deduction","type": "number", "unit": "sqm", "required": false, "source": "user", "default": 0, "regulation_ref": "33(5) clause 3"}
+      ]
+    },
+    {
+      "key": "road",
+      "title": "Road Access",
+      "fields": [
+        {"key": "primary_road_width_m","label": "Primary Road Width","type": "number", "unit": "m", "required": true, "source": "user", "help": "≥ 18m + plot ≥ 4000 sqm qualifies for 4.0 FSI cap"}
+      ]
+    },
+    {
+      "key": "existing",
+      "title": "Existing MHADA Society Data",
+      "fields": [
+        {"key": "existing_carpet_area_sqm","label": "Total Existing Carpet Area (all tenements)","type": "number", "unit": "sqm", "required": true, "source": "user"},
+        {"key": "num_existing_tenants",    "label": "Number of Existing Tenants",              "type": "number", "unit": "count", "required": true, "source": "user"},
+        {"key": "existing_bua_sqm",        "label": "Existing BUA (per approved plans)",       "type": "number", "unit": "sqm", "required": false, "source": "user"},
+        {"key": "num_existing_buildings",  "label": "Number of Existing Buildings",             "type": "number", "unit": "count", "required": false, "source": "user", "default": 1},
+        {"key": "carpet_to_bua_loading_factor","label": "Carpet → BUA Loading Factor",         "type": "number", "unit": "ratio", "required": true, "source": "user", "default": 1.32, "help": "Typical Mumbai high-rise: 1.25-1.35"}
+      ]
+    },
+    {
+      "key": "fsi",
+      "title": "Basic FSI & Sharing (Reg 33(5))",
+      "fields": [
+        {"key": "basic_fsi",          "label": "Basic FSI (3.0 default; 4.0 if plot ≥ 4000 sqm AND road ≥ 18m)","type": "number", "unit": "ratio", "required": true, "source": "user", "default": 3.0, "regulation_ref": "33(5) fsi_caps"},
+        {"key": "rehab_additional_pct","label": "Rehab Additional Carpet % (plot-size-based Table A)","type": "number", "unit": "percent", "required": true, "source": "user", "default": 15, "help": "15% for 4000-2ha, 25% for 2-5ha, 35% for 5-10ha, 45% for >10ha"},
+        {"key": "rehab_base_add_pct", "label": "Rehab Base Add % (35% on existing carpet)","type": "number", "unit": "percent", "required": true, "source": "user", "default": 35, "regulation_ref": "33(5) A(a)"},
+        {"key": "min_rehab_carpet_sqm","label": "Min Rehab Carpet per Tenement","type": "number", "unit": "sqm", "required": true, "source": "user", "default": 35, "regulation_ref": "33(5) A(a) — statutory minimum"},
+        {"key": "apply_fungible_pct","label": "Fungible % to Apply", "type": "number", "unit": "percent", "required": true, "source": "user", "default": 35, "regulation_ref": "Reg 31(3)"}
+      ]
+    },
+    {
+      "key": "basic_ratio",
+      "title": "Basic Ratio (LR/RC) — determines Incentive & Sharing",
+      "help": "LR = ASR land rate ₹/sqm. RC = ASR RCC construction rate ₹/sqm. Both for year of approval.",
+      "fields": [
+        {"key": "asr_land_rate_inr_sqm",        "label": "ASR Land Rate (LR)","type": "number", "unit": "INR/sqm", "required": true, "source": "user", "help": "e.g. Worli MHADA SDRR ₹1,78,070/sqm"},
+        {"key": "asr_construction_rate_inr_sqm","label": "ASR RCC Construction Rate (RC)","type": "number", "unit": "INR/sqm", "required": true, "source": "user", "help": "Typical Mumbai City 2024: ₹40,000-45,000/sqm"}
+      ]
+    }
+  ]
+}

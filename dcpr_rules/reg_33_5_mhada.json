@@ -1,0 +1,184 @@
+{
+  "regulation_key": "33(5)",
+  "title": "Development / Redevelopment of Housing Schemes of MHADA",
+  "part": "VI",
+  "source": "DCPR 2034",
+  "effective_from": "2018-05-08",
+  "version": 1,
+  "source_pdf_lines": {"start": 9420, "end": 9958},
+
+  "scope": "MHADA-owned or MHADA-managed housing schemes (EWS/LIG/MIG). Covers both new schemes on vacant MHADA land and redevelopment of existing MHADA colonies.",
+
+  "categories": {
+    "EWS": "Economically Weaker Sections",
+    "LIG": "Low Income Group",
+    "MIG": "Middle Income Group",
+    "HIG": "High Income Group (NOT eligible for 4.0 FSI)"
+  },
+
+  "fsi_caps": {
+    "new_scheme_on_vacant_mhada_land": {
+      "max_fsi": 4.0,
+      "computed_on": "gross_plot_area",
+      "excludes_fungible": true,
+      "min_ews_lig_mig_bua_share_pct": 70,
+      "note": "FSI 4.0 not applicable to HIG portion."
+    },
+    "redevelopment_existing_mhada_scheme": {
+      "max_fsi_default": 3.0,
+      "upgraded_to_4_condition": "plot_area_sqm >= 4000 AND road_width_m >= 18.0",
+      "computed_on": "gross_plot_area",
+      "excludes_fungible": true,
+      "min_ews_lig_mig_bua_share_pct": 60
+    }
+  },
+
+  "rehab_area_entitlement": {
+    "residential_existing_tenement_formula": "max(existing_carpet_sqm + 35% × existing_carpet_sqm, 35 sqm) + additional_from_table_A",
+    "table_A_additional_pct_by_plot_area": [
+      {"area_min_sqm": 4000,  "area_max_sqm": 20000, "additional_carpet_pct": 15, "band": "> 4000 sqm to 2 ha"},
+      {"area_min_sqm": 20000, "area_max_sqm": 50000, "additional_carpet_pct": 25, "band": "2 ha to 5 ha"},
+      {"area_min_sqm": 50000, "area_max_sqm": 100000,"additional_carpet_pct": 35, "band": "5 ha to 10 ha"},
+      {"area_min_sqm": 100000,"area_max_sqm": null,  "additional_carpet_pct": 45, "band": "above 10 ha"}
+    ],
+    "max_cap": "Cannot exceed max MIG carpet area prescribed by Govt on date of approval",
+    "commercial_or_amenity_unit_formula": "existing_carpet_sqm + 20% × existing_carpet_sqm"
+  },
+
+  "incentive_fsi": {
+    "definition": "Additional FSI over-and-above rehab FSI, as % of admissible rehab area",
+    "basic_ratio_formula": "LR / RC",
+    "LR": "Land Rate for FSI 1 per ASR (weighted avg if multiple rates apply)",
+    "RC": "Rate of RCC Construction per ASR",
+    "year_used": "Year in which redevelopment project is approved by Competent Authority",
+    "table_B_incentive_by_basic_ratio": [
+      {"basic_ratio_min": 6.00, "basic_ratio_max": null, "incentive_pct_of_rehab_area": 40},
+      {"basic_ratio_min": 4.00, "basic_ratio_max": 6.00, "incentive_pct_of_rehab_area": 50},
+      {"basic_ratio_min": 2.00, "basic_ratio_max": 4.00, "incentive_pct_of_rehab_area": 60},
+      {"basic_ratio_min": 0,    "basic_ratio_max": 2.00, "incentive_pct_of_rehab_area": 70}
+    ],
+    "subject_to": "Availability of FSI on plot under redevelopment and MHADA's distribution decision"
+  },
+
+  "balance_fsi_sharing": {
+    "description": "FSI remaining after rehab + incentive is shared between Co-op Society and MHADA. MHADA's share is handed over FREE of cost.",
+    "society_developer_undertaking_table_C": [
+      {"basic_ratio_min": 6.00, "basic_ratio_max": null, "society_share_pct": 30, "mhada_share_pct": 70},
+      {"basic_ratio_min": 4.00, "basic_ratio_max": 6.00, "society_share_pct": 35, "mhada_share_pct": 65},
+      {"basic_ratio_min": 2.00, "basic_ratio_max": 4.00, "society_share_pct": 40, "mhada_share_pct": 60},
+      {"basic_ratio_min": 0,    "basic_ratio_max": 2.00, "society_share_pct": 45, "mhada_share_pct": 55}
+    ],
+    "special_case_plots_up_to_2000_sqm": {
+      "option": "MHADA may waive its BUA share and instead allow additional BUA up to 3.00 FSI on payment of premium per Table C1",
+      "table_C1_premium_pct_of_asr": [
+        {"lr_rc_min": 0, "lr_rc_max": 2, "EWS_LIG_pct": 40, "MIG_pct": 60, "HIG_pct": 80},
+        {"lr_rc_min": 2, "lr_rc_max": 4, "EWS_LIG_pct": 45, "MIG_pct": 65, "HIG_pct": 85},
+        {"lr_rc_min": 4, "lr_rc_max": 6, "EWS_LIG_pct": 50, "MIG_pct": 70, "HIG_pct": 90},
+        {"lr_rc_min": 6, "lr_rc_max": null, "EWS_LIG_pct": 55, "MIG_pct": 75, "HIG_pct": 95}
+      ]
+    },
+    "plots_4000_sqm_plus_and_road_18m_plus": {
+      "additional_fsi_over_3": 1.00,
+      "form": "Social Housing stock",
+      "sharing_mhada_society": "1 : 0.5",
+      "handover_cost": "MHADA pays cost of construction as per ASR; no compensation for BUA"
+    }
+  },
+
+  "development_cess_infrastructure": {
+    "rate_pct_of_asr_land_rate": 7,
+    "applies_to": "BUA over Zonal (basic) FSI, including fungible",
+    "collected_by": "MHADA",
+    "shared_with_mcgm_pct": 75,
+    "shared_with_mcgm_note_alt": "5/7th part (~71%) — DCPR text has both formulations",
+    "additional_to_dev_charges_under_MRTP_s_124": true
+  },
+
+  "premium_exemptions_no_31_1_and_31_3": [
+    "Construction of EWS/LIG/MIG tenements by MHADA on MHADA plot",
+    "EWS/LIG/MIG tenements towards MHADA's share in redevelopment",
+    "Rehabilitation component of a redevelopment project"
+  ],
+
+  "consent_requirement": {
+    "co_op_society_or_developer_case_pct": 51,
+    "original_pct_before_amendment": 70,
+    "action_against_non_consenting": "Section 95A of MHAD Act 1976",
+    "mhada_undertaken_case": "Co-op Society resolution per Cooperative Societies Act 1960 is sufficient"
+  },
+
+  "corpus_fund": {
+    "required": true,
+    "created_by": "Developer",
+    "amount": "As decided by MHADA",
+    "purpose": "Maintenance of new rehab buildings, held with Co-op Housing Society"
+  },
+
+  "layout_area_for_fsi_computation": {
+    "included": ["DP roads within layout", "Internal roads"],
+    "excluded": ["Land under reservation of public amenities"]
+  },
+
+  "front_open_space_min_m": 3.0,
+
+  "convenience_shopping": {
+    "allowed_along_layout_roads_width_m": {"min": 9, "max": 18},
+    "note": "Original DCPR text 12m minimum; revised to 9m"
+  },
+
+  "slum_pocket_within_mhada_layout": {
+    "trigger": "Land partially occupied by slum notified under Slum Act Sec 4 prior to 1/1/2000 (or such reference date)",
+    "each_eligible_slum_dweller_carpet_sqm": 25.0,
+    "non_residential_slum_carpet_sqm": "min(existing, 20.90)",
+    "corpus_deposit_with_mhada_per_dweller_inr": 40000,
+    "note": "Corpus deposit reference — SRA Circular 7 / 33(10)"
+  },
+
+  "cross_references": {
+    "reg_31_fungible": "Fungible on rehab and MHADA share: free of premium (no Reg 31(1)/31(3) charge)",
+    "reg_33_10_borrowed_relaxations": "Reg 33(10) relaxations apply here EXCEPT clauses 6.11, 6.15, 6.16, 6.18",
+    "reg_17_1": "Reservations in MHADA layout developed per Reg 17(1)"
+  },
+
+  "operational_formulas_verified": {
+    "description": "Verified against Worli MHADA feasibility (Shivneri CHS 1&2 + Shree Ganesh 3&4, plot 4,381.35 sqm, 192 tenants, SDRR ₹1,78,070/sqm). Basic FSI 3.0 → 13,144.05 sqm; Full scheme with fungible 5.4 FSI → 23,659.29 sqm.",
+    "basic_fsi_selection": {
+      "default_3_0_for_all_plots": 3.0,
+      "elevated_4_0_condition": "plot_area ≥ 4000 sqm AND road_width ≥ 18m",
+      "verified_worli": "plot 4,381.35 (>4000) qualifies for 4.0; feasibility achieves 4.0 base + 35% fungible = 5.4 total FSI"
+    },
+    "rehabilitation_entitlement_formula": {
+      "base": "existing_carpet_per_tenement + 35% thereof",
+      "minimum_carpet_per_tenement_sqm": 35,
+      "additional_by_plot_size_pct": {
+        "above_4000sqm_to_2ha":  15,
+        "above_2ha_to_5ha":      25,
+        "above_5ha_to_10ha":     35,
+        "above_10ha":            45
+      },
+      "cap": "max entitlement ≤ MIG carpet limit prescribed by Govt on approval date"
+    },
+    "incentive_fsi_by_basic_ratio_tiers": [
+      {"basic_ratio_min": 0.0, "basic_ratio_max": 2.0,  "incentive_pct_of_rehab_area": 70},
+      {"basic_ratio_min": 2.0, "basic_ratio_max": 4.0,  "incentive_pct_of_rehab_area": 60},
+      {"basic_ratio_min": 4.0, "basic_ratio_max": 6.0,  "incentive_pct_of_rehab_area": 50},
+      {"basic_ratio_min": 6.0, "basic_ratio_max": null, "incentive_pct_of_rehab_area": 40}
+    ],
+    "sharing_of_balance_fsi_tiers": [
+      {"basic_ratio_min": 0.0, "basic_ratio_max": 2.0,  "society_share_pct": 45, "mhada_share_pct": 55},
+      {"basic_ratio_min": 2.0, "basic_ratio_max": 4.0,  "society_share_pct": 40, "mhada_share_pct": 60},
+      {"basic_ratio_min": 4.0, "basic_ratio_max": 6.0,  "society_share_pct": 35, "mhada_share_pct": 65},
+      {"basic_ratio_min": 6.0, "basic_ratio_max": null, "society_share_pct": 30, "mhada_share_pct": 70}
+    ],
+    "basic_ratio_formula": "LR / RC where LR = ASR land rate per sqm, RC = ASR RCC construction rate per sqm (both for approval year)",
+    "development_cess": {
+      "rate_pct_of_asr_land_rate_for_FSI_1": 7.0,
+      "applies_to": "Extra FSI (excl. fungible) over normal FSI",
+      "mcgm_share_ratio": "5/7 to MCGM off-site infra, 2/7 retained by MHADA"
+    }
+  },
+  "extraction_gaps": {
+    "note": "MIG carpet cap value referenced 'as prescribed by Govt' — resolved via Govt notification. Basic Ratio requires ASR data — user inputs LR & RC directly.",
+    "calculator_status": "AVAILABLE — Reg33_5_Calculator.php present. Verified structurally against Worli MHADA (plot × Basic FSI 3.0 and full-scheme 5.4)."
+  }
+}
