@@ -5,15 +5,19 @@
  * Local-dev (XAMPP on localhost / 127.0.0.1 / 192.168.*) uses the standard
  * XAMPP root/empty-password defaults — no env setup needed.
  *
- * Production reads from environment variables. Set them in your host's panel
- * (shared hosting cPanel, Apache SetEnv, systemd EnvironmentFile, Docker env,
- * .htaccess SetEnv, or an .env loader before this file is included).
+ * Production reads from environment variables. Set them via Apache SetEnv,
+ * systemd EnvironmentFile, Docker env — OR drop a `.env` file at project
+ * root and `includes/env_loader.php` will pick it up on the next request.
  *
  * Required env vars in production:
  *   BDVAULT_DB_HOST, BDVAULT_DB_USER, BDVAULT_DB_PASS, BDVAULT_DB_NAME
  *
  * NEVER hard-code production credentials in this file. See .env.example.
  */
+
+// Load values from a project-root .env file if present (local override).
+// Real OS env vars always win over .env — see includes/env_loader.php.
+require_once __DIR__ . '/../includes/env_loader.php';
 
 $isLocal = (php_sapi_name() === 'cli')
         || (isset($_SERVER['HTTP_HOST']) && (
